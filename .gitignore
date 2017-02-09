@@ -17,4 +17,5 @@ wp-content/plugins/hello.php
 /sitemap.xml.gz
 
 *.maps
+*.map
 node_modules/
