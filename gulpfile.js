@@ -47,7 +47,7 @@ gulp.task('styles', function() {
           add: true,
           remove: true,
         }))
-        .pipe(sourcemaps.write('./.maps'))
+        .pipe( sourcemaps.write('.'))
         .pipe( gulp.dest('./').on('error', gutil.log))
         .pipe(size({ title: 'style.css size', showFiles: true }))
         .pipe(browserSync.stream({match: '**/*.css'}));
@@ -82,7 +82,7 @@ gulp.task('styles:prod', function() {
           discardDuplicates: true,
 
       })).on('error', gutil.log)
-      .pipe( sourcemaps.write('./'))
+      .pipe( sourcemaps.write('.'))
       .pipe( gulp.dest('./'))
       .pipe(size({ title: 'SIZE -> CSS', showFiles: true }))
       .pipe(browserSync.stream({match: '**/*.css'}));
@@ -91,15 +91,28 @@ gulp.task('styles:prod', function() {
 
 gulp.task('scripts', function () {
 
-    return gulp.src('_src/js/main.js')
+    return gulp.src('_src/js/global.js')
     .pipe(include())
-    .pipe(rename("main.min.js"))
+    .pipe(rename("global.js"))
+    .pipe(sourcemaps.init())
+    .pipe( sourcemaps.write('.'))
+    .pipe(gulp.dest('./js/'))
+    .pipe(size({ title: 'JS Scripts', showFiles: true }))
+    .pipe(browserSync.stream({match: './**/*.js'}));
+});
+
+
+gulp.task('scripts:prod', function () {
+
+    return gulp.src('_src/js/global.js')
+    .pipe(include())
+    .pipe(rename("global.js"))
     .pipe(sourcemaps.init())
     .pipe(uglify().on('error', gutil.log))
-    // .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest('/js/'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('./js/'))
     .pipe(size({ title: 'JS Scripts', showFiles: true }))
-    .pipe(browserSync.stream({match: './assets/**/*.js'}));
+    .pipe(browserSync.stream({match: './**/*.js'}));
 });
 
 
