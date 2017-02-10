@@ -162,10 +162,9 @@
 } )();
 
 
-$(document).ready(function() {
-
+(function($) {
 
 // Place any jQuery/helper plugins in here.
 
-});
+})(jQuery);
 //# sourceMappingURL=global.js.map
