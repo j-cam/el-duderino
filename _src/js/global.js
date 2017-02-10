@@ -2,9 +2,8 @@
 //=include ./modules/skip-link-focus-fix.js
 //=include ./modules/navigation.js
 
-$(document).ready(function() {
-
+(function($) {
 
 // Place any jQuery/helper plugins in here.
 
-});
+})(jQuery);
