@@ -42,8 +42,22 @@
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'el-duderino' ); ?></button>
-			<?php wp_nav_menu( array( 'theme_location' => 'menu-1', 'menu_id' => 'primary-menu' ) ); ?>
+			<?php $menu_item_count_class = get_nav_menu_item_count_class('primary');?>
+
+
+			<?php
+				bem_nav_menu( array(
+					'theme_location' => 'primary',
+					'container' => false,
+					'menu_id'=> 'primary-menu',
+					'menu_class' => 'primary-nav__menu'. $menu_item_count_class,
+					'css_class_prefix' => 'primary-menu',
+					'css_class_modifiers' => null
+					) );
+				?>
+
 		</nav><!-- #site-navigation -->
+
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
