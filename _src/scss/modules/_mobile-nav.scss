@@ -1,0 +1,292 @@
+/*============================================================================
+  #Mobile Nav
+  - List of items inside the mobile drawer
+==============================================================================*/
+.branding__logo-mobile-menu {
+    width: 119px;
+    height: 119px;
+    img {
+      width: 100%;
+    }
+    a {
+      text-decoration: none;
+      display: block;
+      width: 100%;
+      height: 100%;
+      // @include image-replace();
+    }
+
+    @media ($mobile_medium) {
+        width: 110px;
+        height: 110px;
+    }
+
+}
+
+
+
+.mobile-nav {
+    padding: $drawer_nav_gutters;
+    // Negative of .drawer left/right padding for full-width link tap area
+    margin: 0;
+    li {
+        margin-bottom: 0;
+        list-style: none;
+        display: block;
+        width: 100%;
+        @include rgba_property('border-color',  $drawer_border_color, 0.74);
+        border-style: solid;
+        border-width: 1px;
+        border-left:none;
+        border-right: none;
+        border-bottom: none;
+
+        &:first-child {
+            border-top: none;
+        }
+
+    }
+    li li {
+        border: none;
+    }
+    ul {
+        padding-left: 0;
+    }
+    a {
+        text-decoration: none;
+        color: $drawer_nav_text_color;
+        font-family: $sans;
+        font-weight: $drawer_nav_font_weight;
+        text-decoration: none;
+        font-size: em(16px);
+    }
+    ul {
+        a {
+            text-decoration: none;
+            color: $drawer_sub_nav_text_color;
+            font-family: $sans;
+            font-weight: $drawer_sub_nav_font_weight;
+            text-decoration: none;
+            font-size: em(16px);
+            padding: 10px 25px;
+        }
+        li:first-child a {
+            padding-top: 5px;
+        }
+        li:last-child a {
+            padding-bottom: 20px;
+        }
+    }
+}
+
+.mobile-nav__item {
+    position: relative;
+    display: block;
+    // Background color on top level items so there is no
+    // element overlap on subnav's CSS toggle animation
+    .mobile-nav > & {
+        background-color: $drawer_bg_color;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: $gutter / 2;
+        right: $gutter / 2;
+    }
+    .mobile-nav > &:last-child:after {
+        display: none;
+    }
+}
+
+// Login/logout links can't have a class on them, so style <a> element
+.mobile-nav__item a {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.mobile-nav__item a,
+.mobile-nav__toggle button {
+
+    padding: 15px;
+    text-decoration: none;
+    line-height: 1;
+    &:hover,
+    &:active,
+    &:focus {}
+    &:active,
+    &:focus {}
+}
+
+.mobile-nav__item--active {
+}
+
+.mobile-nav__has-sublist {
+    display: table;
+    width: 100%;
+    .mobile-nav__link {
+        display: table-cell;
+        vertical-align: middle;
+        width: 100%;
+    }
+}
+
+.mobile-nav__toggle,
+.mobile-nav__toggle-arrow {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.mobile-nav__toggle-arrow img {
+    width: 17px;
+    height: 10px;
+}
+
+.mobile-nav__toggle-open {
+    .mobile-nav--expanded & {
+        display: none;
+    }
+}
+
+.mobile-nav__toggle-close {
+    display: none;
+    .mobile-nav--expanded & {
+        display: block;
+    }
+}
+
+.mobile-nav__sublist {
+    margin: 0;
+    max-height: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: all 300ms cubic-bezier(0.57, 0.06, 0.05, 0.95);
+    backface-visibility: hidden;
+    .mobile-nav--expanded & {
+        visibility: visible;
+        max-height: 700px;
+        transition: all 700ms cubic-bezier(0.57, 0.06, 0.05, 0.95);
+    }
+    .mobile-nav__item:after {
+        top: 0;
+        bottom: auto;
+    }
+    .mobile-nav__link {
+        padding-left: 45px;
+        display: table;
+        vertical-align: middle;
+        width: 100%;
+    }
+}
+
+
+/*============================================================================
+  #Drawers
+==============================================================================*/
+
+.js-drawer-open {
+    overflow: hidden;
+    height: 100%;
+}
+
+.drawer {
+    @include promote-layer();
+
+    position: fixed;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    top: 0;
+    bottom: 0;
+
+    max-width: 100%;
+    z-index: z('drawer');
+    background-color: $drawer_bg_color;
+    transition: $drawer_transition;
+    a {
+
+        &:hover,
+        &:focus {}
+    }
+    input,
+    textarea {
+        border-color: $drawer_border_color;
+    }
+    button {
+        background-color: $drawer_bg_color;
+    }
+}
+
+.drawer--left {
+    width: $drawer_nav_width;
+    left: -$drawer_nav_width;
+
+    .js-drawer-open-left & {
+        display: block;
+
+        .lt-ie9 & {
+            left: 0;
+        }
+    }
+}
+
+#PageContainer {
+    overflow: hidden;
+}
+
+.is-moved-by-drawer {
+    @include promote-layer();
+    transition: $drawer_transition;
+    .js-drawer-open-left & {
+        transform: translateX($drawer_nav_width);
+    }
+    // .js-drawer-open-right & {
+    //     transform: translateX(-$drawer_cart_width);
+    // }
+}
+
+.drawer__header {
+    display: block;
+    padding: 9px 25px 0 25px;
+    height: 110px;
+    width: 100%;
+
+    //box-shadow: 0px 2px 5px 0px rgba(176,176,176,1);
+    @media ($mobile_medium) {
+        padding-left: 9px;
+    }
+}
+
+.drawer__title,
+.drawer__close {
+    vertical-align: top;
+}
+
+.drawer__title {
+    width: 100%;
+}
+
+.drawer__close {
+    text-align: left;
+    font-size: em(18px);
+    position: absolute;
+    top: 29px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+
+}
+
+.drawer__close button {
+    @include button($pad-top-bottom: 15px, $pad-left-right: 15px);
+    background: #bb3930;
+
+    img {
+        width: 19px;
+        height: 19px;
+        // vertical-align: middle;
+    }
+    &:active,
+    &:focus {}
+}

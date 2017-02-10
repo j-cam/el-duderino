@@ -11,6 +11,7 @@
 
 $debug_breakpoints: true;
 
+$default_transition_duration: 0.4s;
 /*============================================================================
   1. Content Sizing
 ==============================================================================*/
@@ -119,6 +120,7 @@ $fw_medium:   500;
 $fw_bold:     700;
 $fw_black:    900;
 
+
 //---- Font Families
 
 $sans:              'Avant Garde', Avantgarde, 'Century Gothic', CenturyGothic, AppleGothic, 'Helvetica Neue', Helvetica, sans-serif;
@@ -166,10 +168,11 @@ $font_size_h6_min:  12px;
 //---- Color Names
 
 $red:           #ff4444;
-$grey:          #b7b9b8;
 $blue:          #86bed8;
 $white:         #fff;
 $black:         #2c2c35;
+$grey:          #b7b9b8;
+$light_grey: #b4b4b4;
 $lightest_grey: #f5f4f4;
 
 //---- Named Colors
@@ -228,6 +231,11 @@ $navbar_txt_color: $darkest;
 $navbar_link_active: $red;
 $subnav_highlight_color: $red;
 
+$navbar_link_fw: $fw_medium;
+$navbar_link_color: $darkest;
+$navbar_link_font_family: $sans;
+
+
 //---- Helper colors
 
 $disabled_grey: #d5d5d7;
@@ -247,11 +255,18 @@ $success_green_bg: #ecfef0;
 
 //---- Drawers
 $drawer_nav_width: 100%;
+$drawer_nav_gutters: 25px;
 $drawer_cart_width: 100%;
 $drawer_bg_color: $lightest;
 $drawer_border_color: darken($drawer_bg_color, 5%);
 $drawer_text_color: $darkest;
-$drawer_transition: all 0.4s cubic-bezier(0.46, 0.01, 0.32, 1);
+//$drawer_transition: all 0.4s cubic-bezier(0.46, 0.01, 0.32, 1);
+$drawer_transition: all $default_transition_duration cubic-bezier(0.46, 0.01, 0.32, 1);
+$drawer_border_color: $light_grey;
+$drawer_nav_text_color: $black;
+$drawer_nav_font_weight: $fw_bold;
+$drawer_sub_nav_text_color: $black;
+$drawer_sub_nav_font_weight: $fw_medium;
 
 //---- Button Defaults
 
