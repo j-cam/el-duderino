@@ -118,7 +118,7 @@ gulp.task('scripts:prod', function () {
 
 gulp.task('watch', ['browserSync', 'styles', 'scripts'], function() {
 
-  gulp.watch('_src/scss/**/*.scss', ['styles:prod']);
+  gulp.watch('_src/scss/**/*.scss', ['styles']);
 
 
   gulp.watch('_src/js/**/*.js', ['scripts']);
@@ -127,3 +127,6 @@ gulp.task('watch', ['browserSync', 'styles', 'scripts'], function() {
 });
 
 gulp.task('default', ['watch']);
+
+
+gulp.task('build', ['styles:prod', 'scripts:prod']);
