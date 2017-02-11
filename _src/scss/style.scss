@@ -114,8 +114,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   or child selectors to target those elements.
 
 ------------------------------------------- */
-@import "modules/nav";
-@import "modules/mobile-nav";
+@import "modules/navigation/navbar";
+@import "modules/navigation/main-nav";
 
 
 

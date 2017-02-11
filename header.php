@@ -21,7 +21,7 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'el-duderino' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'underscores-master' ); ?></a>
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="site-branding">
@@ -40,24 +40,72 @@
 			endif; ?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'el-duderino' ); ?></button>
-			<?php $menu_item_count_class = get_nav_menu_item_count_class('primary');?>
-
-
-			<?php
-				bem_nav_menu( array(
-					'theme_location' => 'primary',
-					'container' => false,
-					'menu_id'=> 'primary-menu',
-					'menu_class' => 'primary-nav__menu'. $menu_item_count_class,
-					'css_class_prefix' => 'primary-menu',
-					'css_class_modifiers' => null
-					) );
-				?>
-
+		<nav id="site-navigation" class="main-nav" role="navigation">
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'underscores-master' ); ?></button>
+			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 		</nav><!-- #site-navigation -->
-
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php /*
+			<div id="wrap-site-nav-menus" class="wrapper">
+			    <!-- start: device helper DT nav -->
+			    <div id="" class="tablet-down--hide">
+						<div class="navbar__flex-container">
+							<div class="navbar__logo-block">
+								<h1 class="site-title navbar__site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+							</div>
+						 	<div class="navbar__nav-block">
+							<?php
+								// bem_nav_menu( array(
+								// 	'theme_location' => 'primary',
+								// 	'container' => false,
+								// 	'menu_id'=> 'main-navigation',
+								// 	'menu_class' => 'main-navigation',
+								// 	'css_class_prefix' => 'primary-menu',
+								// 	'css_class_modifiers' => null
+								// 	) );
+								?>
+							</div>
+						</div>
+					</div><!-- end: device helper DT nav -->
+					<div class="desktop--hide tablet-down--show">
+						<?php
+							bem_nav_menu( array(
+								'theme_location' => 'primary-mobile',
+								'container' => false,
+								'menu_id'=> 'primary-menu-mobile',
+								'menu_class' => 'mobile-nav'. $menu_item_count_class,
+								'css_class_prefix' => 'mobile-nav',
+								'css_class_modifiers' => null
+								) );
+				    ?>
+					</div>
+*/ ?>
