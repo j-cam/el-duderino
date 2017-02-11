@@ -73,13 +73,13 @@
 /* Small menu. */
 .menu-toggle,
 .main-navigation.toggled ul {
-	display: block;
+	// display: block;
 }
 
 @media screen and (min-width: 37.5em) {
-	.menu-toggle {
-		display: none;
-	}
+	// .menu-toggle {
+	// 	display: none;
+	// }
 	// .main-navigation ul {
 	// 	display: block;
 	// }

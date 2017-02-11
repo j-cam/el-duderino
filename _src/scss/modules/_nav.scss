@@ -3,7 +3,7 @@
   height: 100%;
 
 
-  &__menu {
+  &__main-menu {
     width: 100%;
     height: 100%;
     list-style: none;
@@ -36,15 +36,20 @@
       &.current_page_parent > a {
         @include rgba_property(color,#ffffff, 0.5);
       }
-      &--toggle {
-        display: none;
-      }
+    }
+
+    /**
+     * Hide the main menu on tablet
+     * and show the mobile menu.
+     */
+    @media ($below_tablet) {
+      display: none;
     }
   }
-  @media ($below_tablet) {
-    display: none;
-  }
 
+  /**
+   * Show any dropdows on hover
+   */
   .menu-item.menu-item-has-children:hover {
     > .sub-menu {
       visibility: visible;
@@ -54,13 +59,14 @@
 
     }
   }
-    // .menu-item.menu-item-has-children {
-    //  > .sub-menu {
-    //    display: block;
-    //  }
-   //   }
-  /*================ Dropdowns ================*/
 
+  /*================ Dropdowns ================*/
+  /**
+   * Don't show the toggle on desktop
+   */
+  &__toggle {
+      display: none;
+  }
 
   .sub-menu {
     min-width: 218px;
@@ -103,7 +109,7 @@
 
 
 
-} // .global-nav
+} // .primary-nav
 
 
 
