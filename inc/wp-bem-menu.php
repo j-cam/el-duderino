@@ -11,7 +11,7 @@ class walker_texas_ranger extends Walker_Nav_Menu {
         // Define menu item names appropriately
         $this->item_css_class_suffixes = array(
             'item'                      => '__item',
-            'parent_item'               => '__has-sublist',
+            'parent_item'               => '__item--has-sublist',
             'active_item'               => '__item--active',
             'parent_of_active_item'     => '__item--parent--active',
             'ancestor_of_active_item'   => '__item--ancestor--active',
@@ -55,10 +55,10 @@ class walker_texas_ranger extends Walker_Nav_Menu {
         // Add toggle button(s)
         $output.= "\n";
         $output.= '<div class="'. $prefix . $suffix['sub_menu_item_toggle'] .'">';
-        $output.= '<button type="button" class="menu-toggle ' . $prefix . $suffix['sub_menu_item_toggle_open'] . ' ' . $prefix .'__toggle-arrow">';
+        $output.= '<button type="button" class="menu-toggle ' . $prefix . $suffix['sub_menu_item_toggle_open'] . ' ' . $prefix .'__toggle-arrow desktop--hide ">';
         $output.= '<img src="'. get_stylesheet_directory_uri() .'/images/sub-nav-arrow.svg" alt="expand" />';
         $output.= '</button>';
-        $output.='<button type="button" class="menu-toggle ' . $prefix . $suffix['sub_menu_item_toggle_close'] . ' ' . $prefix .'__toggle-arrow">';
+        $output.='<button type="button" class="menu-toggle ' . $prefix . $suffix['sub_menu_item_toggle_close'] . ' ' . $prefix .'__toggle-arrow desktop--hide ">';
         $output.='<img src="'. get_stylesheet_directory_uri() .'/images/sub-nav-arrow.svg" alt="collapse" />';
         $output.='</button>';
         $output.= '</div>';
