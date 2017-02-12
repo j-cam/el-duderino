@@ -1,0 +1,11 @@
+.layer {
+  &__main-nav {
+    z-index: z('desktop-nav');
+  }
+  &__mobile-nav {
+    z-index: z('mobile-nav');
+  }
+  &__site-content {
+    z-index: z('site-content');
+  }
+}
