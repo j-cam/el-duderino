@@ -30,31 +30,33 @@
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'underscores-master' ); ?></button>
 			<div class="main-nav__wrapper">
 				<div class="tablet-down--hide">
-					<div class="main-nav__flex-container">
-						<div class="main-nav__site-branding">
-							<?php
-							if ( is_front_page() && is_home() ) : ?>
-								<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-							<?php else : ?>
-								<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-							<?php
-							endif;
+					<div class="layer__main-nav main-nav__flex-container">
+						<div class="main-nav__site-branding-flex-item">
+							<div class="main-nav__site-branding">
+								<?php
+								if ( is_front_page() && is_home() ) : ?>
+									<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+								<?php else : ?>
+									<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+								<?php
+								endif;
 
-							$description = get_bloginfo( 'description', 'display' );
-							if ( $description || is_customize_preview() ) : ?>
-								<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-							<?php
-							endif; ?>
-					</div><!-- .site-branding -->
-					<div class="main-nav__menu">
+								$description = get_bloginfo( 'description', 'display' );
+								if ( $description || is_customize_preview() ) : ?>
+									<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
+								<?php
+								endif; ?>
+							</div>
+					</div><!-- end: site-branding-flex-item -->
+					<div class="main-nav__menu-flex-item">
 						<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'main-nav__main-menu', 'container' => false ) ); ?>
-					</div>
+					</div><!-- end: menu-flex-item -->
 				</div><!-- end: device helper - hide tablet -->
 			</div><!-- end: .main-nav__main-menu-wrap -->
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content">
+	<div id="content" class="layer__site-content site-content">
 
 
 

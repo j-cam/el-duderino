@@ -2,12 +2,14 @@ $module: 'main-nav';
 
 .main-nav {
     clear: both;
-    display: table;
+
     margin: 0 auto;
     line-height: 1.6;
     width: 100%;
-    // background-color: $navbar_bg_color;
-    background-color: #ccc;
+    @include rgba_property( 'background-color',
+        $color__main-nav-bg,
+        $color__main-nav-bg-opacity
+    )
 
     &__wrapper {
         @include clearfix();
@@ -29,28 +31,96 @@ $module: 'main-nav';
         align-items: center;
 
     }
+    &__menu-flex-item {
+        width: 80%;
+    }
+    &__site-branding-flex-item {
+        width: 20%;
+    }
+
     &__main-menu {
-        display: table;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        align-items: center;
         margin: 0 auto;
         line-height: 1.6;
 
-        a {
-            font-size: 14px;
+        /* Only 1st level items */
+        > li > a {
+            padding-top: 18px;
+            padding-bottom: 18px;
+            padding-right: 18px;
+            @include rgba_property( 'color',
+                $color__main-nav-text,
+                $color__main-nav-text-opacity
+            )
+            @include rgba_property( 'background-color',
+                $color__main-nav-bg,
+                $color__main-nav-bg-opacity
+            )
+                &:hover {
+                    @include rgba_property( 'color',
+                        $color__main-nav-text-hover,
+                        $color__main-nav-text-opacity-hover
+                    )
+                    @include rgba_property( 'background-color',
+                        $color__main-nav-bg-hover,
+                        $color__main-nav-bg-opacity-hover
+                    )
+                }
+        }
+        /* All items */
+        li a {
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+        /* 2nd level and below items */
+        ul li a {
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+            @include rgba_property( 'color',
+                $color__main-nav-sub-menu-text,
+                $color__main-nav-sub-menu-text-opacity
+            )
+                &:hover {
+                    @include rgba_property( 'color',
+                        $color__main-nav-sub-menu-text-hover,
+                        $color__main-nav-sub-menu-text-opacity-hover
+                    )
+                   @include rgba_property( 'background-color',
+                       $color__main-nav-sub-menu-bg-hover,
+                       $color__main-nav-sub-menu-bg-opacity-hover
+                   )
+                }
+        }
+        .sub-menu {
+            @include rgba_property( 'background-color',
+                    $color__main-nav-sub-menu-bg,
+                    $color__main-nav-sub-menu-bg-opacity
+            )
+            li:first-child a {
+                padding-top: 10px;
+            }
+
         }
     }
 
 
     ul {
-        display: none;
         list-style: none;
         margin: 0;
         padding-left: 0;
 
+        /* 2nd level and beyond */
         ul {
-            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+
             float: left;
             position: absolute;
-            top: 1.5em;
+            // top: 1.5em;
+            top: 100%;
             left: -999em;
             z-index: 99999;
 
@@ -108,11 +178,15 @@ $module: 'main-nav';
     }
 
     &__site-branding {
+
         h1.site-title,
         p.site-title {
             margin: 0 0 0 0;
             font-size: 18px;
             font-weight: bold;
+            a {
+                color: #000;
+            }
         }
         p.site-description {
             margin: 0 0 0 0;
@@ -125,7 +199,7 @@ $module: 'main-nav';
     display: none;
 }
 .main-nav ul {
-    display: block;
+    // display: block;
 }
 /* Small menu. */
 @media ($tablet) {
