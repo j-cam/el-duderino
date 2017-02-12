@@ -39,7 +39,7 @@ $module: 'main-nav';
     }
 
     &__main-menu {
-        display: flex;
+        display: flex; // removes white-space between items
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: flex-start;
