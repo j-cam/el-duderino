@@ -195,12 +195,12 @@
  * .foobar { @include rgba-bg(#f37,.9) { ... } }
  */
 
-@mixin rgba_bg($color, $opacity) {
+@mixin rgba_bg($color, $opacity: 1.0) {
     background: $color;
     background: rgba($color, $opacity);
 }
 
-@mixin rgba_property($property, $color, $opacity) {
+@mixin rgba_property($property, $color, $opacity: 1.0) {
     #{$property}: $color;
     #{$property}: rgba($color, $opacity);
 }
