@@ -1514,6 +1514,96 @@ table {
   text-align: right;
   width: 50%; }
 
+/*============================================================================
+  #Drawers
+==============================================================================*/
+.js-drawer-open {
+  overflow: hidden;
+  height: 100%; }
+
+.drawer {
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  display: none;
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  top: 0;
+  bottom: 0;
+  padding: 0 27.5px 27.5px;
+  max-width: 100%;
+  color: #2c2c35;
+  background-color: #fff;
+  transition: all 0.4s cubic-bezier(0.46, 0.01, 0.32, 1); }
+  .drawer a {
+    color: #2c2c35; }
+  .drawer input,
+  .drawer textarea {
+    border-color: #b4b4b4; }
+
+.drawer--left {
+  width: 100%;
+  left: -100%;
+  border-right: 1px solid #b4b4b4; }
+  .js-drawer-open-left .drawer--left {
+    display: block;
+    transform: translateX(100%); }
+    .lt-ie9 .js-drawer-open-left .drawer--left {
+      left: 0; }
+
+.drawer--right {
+  width: 100%;
+  right: -100%;
+  border-left: 1px solid #b4b4b4; }
+  .js-drawer-open-right .drawer--right {
+    display: block;
+    transform: translateX(-100%); }
+    .lt-ie9 .js-drawer-open-right .drawer--right {
+      right: 0; }
+
+#PageContainer {
+  overflow: hidden; }
+
+.is-moved-by-drawer {
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  transition: all 0.4s cubic-bezier(0.46, 0.01, 0.32, 1); }
+  .js-drawer-open-left .is-moved-by-drawer {
+    transform: translateX(100%); }
+  .js-drawer-open-right .is-moved-by-drawer {
+    transform: translateX(-100%); }
+
+.drawer__header {
+  display: table;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  margin-bottom: 27.5px; }
+
+.drawer__title,
+.drawer__close {
+  vertical-align: top; }
+
+.drawer__title {
+  width: 100%; }
+
+.drawer__close {
+  text-align: left;
+  font-size: 1.125em; }
+
+.drawer__close button {
+  position: absolute;
+  width: 61px;
+  height: 65px;
+  padding: 20px;
+  top: 0;
+  left: 0; }
+  .drawer__close button img {
+    width: 21px;
+    height: 21px;
+    vertical-align: top; }
+
 /*!
   ============= Layers ===============
 */
