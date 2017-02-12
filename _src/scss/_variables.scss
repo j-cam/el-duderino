@@ -96,8 +96,9 @@ $spriteSmith_retinaSpritesheetAssetUrl: '\'\{\{ "spritesheet@2x.png" | asset_url
 $z_indexes: (
   modal                       : 20,
   overlay                     : 19,
-  drawer                      : 10,
-  nav-dropdown                : 5,
+  mobile-nav                  : 18, // above desktop nav
+  desktop-nav                 : 17,
+  site-content                : 8,
   image-swap-top              : 5,
   image-swap-bottom           : 4,
 );
@@ -225,7 +226,31 @@ $color_notice:    #66b;
 
 
 
-// Nav and dropdown link background
+// Main Nav colors
+// Top Level
+$color__main-nav-text: #000;
+$color__main-nav-text-opacity: 1.0;
+$color__main-nav-bg: #ccc;
+$color__main-nav-bg-opacity: 1.0;
+//  Top Level -- Hover
+$color__main-nav-text-hover: #fff;
+$color__main-nav-text-opacity-hover: 1.0;
+$color__main-nav-bg-hover: #000;
+$color__main-nav-bg-opacity-hover: 1.0;
+
+// 2nd Level & Below
+$color__main-nav-sub-menu-text: #000;
+$color__main-nav-sub-menu-text-opacity: 1.0;
+$color__main-nav-sub-menu-bg: #ccc;
+$color__main-nav-sub-menu-bg-opacity: 1.0;
+
+// 2nd Level & Below -- Hover
+$color__main-nav-sub-menu-text-hover: #fff;
+$color__main-nav-sub-menu-text-opacity-hover: 1.0;
+$color__main-nav-sub-menu-bg-hover: #000;
+$color__main-nav-sub-menu-bg-opacity-hover: 1.0;
+
+
 $navbar_bg_color: $lightest;
 $navbar_txt_color: $darkest;
 $navbar_link_active: $red;
