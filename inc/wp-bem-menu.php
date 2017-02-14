@@ -11,17 +11,17 @@ class walker_texas_ranger extends Walker_Nav_Menu {
         // Define menu item names appropriately
         $this->item_css_class_suffixes = array(
             'item'                      => '__item',
-            'parent_item'               => '__item--has-sublist',
+            'parent_item'               => '__has-sublist',
             'active_item'               => '__item--active',
             'parent_of_active_item'     => '__item--parent--active',
             'ancestor_of_active_item'   => '__item--ancestor--active',
             'sub_menu'                  => '__sublist',
             'sub_menu_item'             => '__item',
-            /*----------  BEGIN Custom Modification: Added  ----------*/
+            /*----------  BEGIN RJC Modification: Added  ----------*/
             'sub_menu_item_toggle' => '__toggle',
             'sub_menu_item_toggle_open' => '__toggle-open',
             'sub_menu_item_toggle_close' => '__toggle-close',
-            /*----------  END Custom Modification: Added  ----------*/
+            /*----------  END RJC Modification: Added  ----------*/
             'link'                      => '__link',
         );
     }
@@ -50,20 +50,20 @@ class walker_texas_ranger extends Walker_Nav_Menu {
             $prefix . $suffix['sub_menu']. '--' . $real_depth
         );
         $class_names = implode( ' ', $classes );
-        /*----------  BEGIN Custom Modification: Added  ----------*/
+        /*----------  BEGIN RJC Modification: Added  ----------*/
 
         // Add toggle button(s)
         $output.= "\n";
         $output.= '<div class="'. $prefix . $suffix['sub_menu_item_toggle'] .'">';
-        $output.= '<button type="button" class="menu-toggle ' . $prefix . $suffix['sub_menu_item_toggle_open'] . ' ' . $prefix .'__toggle-arrow desktop--hide ">';
-        $output.= '<img src="'. get_stylesheet_directory_uri() .'/images/sub-nav-arrow.svg" alt="expand" />';
+        $output.= '<button type="button" class="' . $prefix . $suffix['sub_menu_item_toggle_open'] . ' ' . $prefix .'__toggle-arrow">';
+        $output.= '<img src="'. get_stylesheet_directory_uri() .'/images/sub-nav-arrow.svg" width="17" height="10" alt="expand" />';
         $output.= '</button>';
-        $output.='<button type="button" class="menu-toggle ' . $prefix . $suffix['sub_menu_item_toggle_close'] . ' ' . $prefix .'__toggle-arrow desktop--hide ">';
-        $output.='<img src="'. get_stylesheet_directory_uri() .'/images/sub-nav-arrow.svg" alt="collapse" />';
+        $output.='<button type="button" class="' . $prefix . $suffix['sub_menu_item_toggle_close'] . ' ' . $prefix .'__toggle-arrow">';
+        $output.='<img src="'. get_stylesheet_directory_uri() .'/images/sub-nav-arrow.svg" width="17" height="10" alt="collapse" />';
         $output.='</button>';
         $output.= '</div>';
         // $output.= '</div>';
-        /*----------  END Custom Modification: Added  ----------*/
+        /*----------  END RJC Modification: Added  ----------*/
 
         // Add a ul wrapper to sub nav
         $output .= "\n" . $indent . '<ul class="'. $class_names .'">' ."\n";
@@ -107,9 +107,9 @@ class walker_texas_ranger extends Walker_Nav_Menu {
         $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"' : '';
         // Creatre link markup
         $item_output = $args->before;
-        /*----------  BEGIN Custom Modification: Added (see line 65 for closing tag) ----------*/
+        /*----------  BEGIN RJC Modification: Added (see line 65 for closing tag) ----------*/
         // $item_output.= '<div class="mobile-nav__has-sublist">';
-        /*----------  BEGIN Custom Modification: Added (see line 65 for closing tag) ----------*/
+        /*----------  BEGIN RJC Modification: Added (see line 65 for closing tag) ----------*/
         $item_output .= '<a' . $attributes . ' ' . $link_class_output . '>';
         $item_output .=     $args->link_before;
         $item_output .=     apply_filters('the_title', $item->title, $item->ID);
@@ -129,38 +129,26 @@ class walker_texas_ranger extends Walker_Nav_Menu {
  * @param  arr/string $css_class_modifiers Provide either a string or array of values to apply extra classes to the <ul> but not the <li's>
  * @return [type]
  */
-function bem_nav_menu( $args = array() ){
-
-    $defaults = array (
-         'theme_location' => 'primary',
-         'container' => false,
-         'menu_id'=> '',
-         'menu_class' => 'nav__menu',
-         'css_class_prefix' => 'primary-menu',
-         'css_class_modifiers' => null
-    );
-
-
-    $walker_args = wp_parse_args( $args, $defaults );
+function bem_menu($location = "main_menu", $css_class_prefix = 'main-menu', $css_class_modifiers = null){
 
     // Check to see if any css modifiers were supplied
-    if($walker_args['css_class_modifiers']){
-        if(is_array($walker_args['css_class_modifiers'])){
-            $modifiers = implode(" ", $walker_args['css_class_modifiers']);
-        } elseif (is_string($walker_args['css_class_modifiers'])) {
-            $modifiers = $walker_args['css_class_modifiers'];
+    if($css_class_modifiers){
+        if(is_array($css_class_modifiers)){
+            $modifiers = implode(" ", $css_class_modifiers);
+        } elseif (is_string($css_class_modifiers)) {
+            $modifiers = $css_class_modifiers;
         }
     } else {
         $modifiers = '';
     }
     $args = array(
-        'theme_location'    => $walker_args['theme_location'],
-        'container'         => $walker_args['container'],
-        'items_wrap'        => '<ul id="'. $walker_args['menu_id'] .'" class="' . $walker_args['menu_class'] . ' ' . $modifiers . '">%3$s</ul>',
-        'walker'            => new walker_texas_ranger($walker_args['css_class_prefix'], true)
+        'theme_location'    => $location,
+        'container'         => false,
+        'items_wrap'        => '<ul class="' . $css_class_prefix . ' ' . $modifiers . '">%3$s</ul>',
+        'walker'            => new walker_texas_ranger($css_class_prefix, true)
     );
 
-    if (has_nav_menu($walker_args['theme_location'])){
+    if (has_nav_menu($location)){
         return wp_nav_menu($args);
     } else {
         echo "<p>You need to first define a menu in WP-admin<p>";
