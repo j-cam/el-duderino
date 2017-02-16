@@ -1,0 +1,39 @@
+.search-form {
+    position: relative;
+    width:100%;
+
+  .search-field, .search-submit {
+      display: block;
+      border: none;
+      border-radius: 0;
+      font-size: 1.3rem;
+  }
+
+  .search-field {
+    width: 100%;
+    padding: 1.3rem;
+    padding-right: 7.5rem;
+    position: relative;
+    top: 0;
+    border: none;
+    background: #eee;
+    &::placeholder {
+      text-transform: lowercase;
+    }
+  }
+  .search-submit {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 7rem;
+    padding: 0;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    text-transform: lowercase;
+    background: $color__background-button;
+    color: $color__text-button;
+  }
+}

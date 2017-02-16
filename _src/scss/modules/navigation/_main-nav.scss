@@ -2,7 +2,6 @@ $module: 'main-nav';
 
 .main-nav {
     clear: both;
-
     margin: 0 auto;
     line-height: 1.6;
     width: 100%;
@@ -193,6 +192,11 @@ $module: 'main-nav';
             font-size: 12px;
             font-weight: normal;
         }
+        h1.site-title,
+        p.site-title,
+        p.site-description {
+          line-height: 1;
+        }
     }
 }
 .menu-toggle {
@@ -206,29 +210,5 @@ $module: 'main-nav';
     .menu-toggle,
     .main-nav.toggled ul {
         display: block;
-    }
-}
-
-
-
-
-.comment-navigation,
-.posts-navigation,
-.post-navigation {
-
-    .site-main & {
-        margin: 0 0 1.5em;
-        overflow: hidden;
-    }
-
-    .nav-previous {
-        float: left;
-        width: 50%;
-    }
-
-    .nav-next {
-        float: right;
-        text-align: right;
-        width: 50%;
     }
 }

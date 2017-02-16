@@ -747,7 +747,7 @@ input[type="color"],
 textarea {
   color: #666;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 0;
   padding: 3px;
   font-family: inherit; }
   input[type="text"]:focus,
@@ -812,9 +812,9 @@ input[type="reset"],
 input[type="submit"] {
   border: 1px solid;
   border-color: #ccc #ccc #bbb;
-  border-radius: 3px;
+  border-radius: 0;
   background: #000;
-  color: #666;
+  color: #fff;
   box-shadow: none;
   font-size: 10px;
   font-size: 1rem;
@@ -1351,6 +1351,10 @@ sup {
     margin: 0 0 0 0;
     font-size: 12px;
     font-weight: normal; }
+  .main-nav__site-branding h1.site-title,
+  .main-nav__site-branding p.site-title,
+  .main-nav__site-branding p.site-description {
+    line-height: 1; }
 
 .menu-toggle {
   display: none; }
@@ -1360,25 +1364,6 @@ sup {
   .menu-toggle,
   .main-nav.toggled ul {
     display: block; } }
-
-.site-main .comment-navigation, .site-main
-.posts-navigation, .site-main
-.post-navigation {
-  margin: 0 0 1.5em;
-  overflow: hidden; }
-
-.comment-navigation .nav-previous,
-.posts-navigation .nav-previous,
-.post-navigation .nav-previous {
-  float: left;
-  width: 50%; }
-
-.comment-navigation .nav-next,
-.posts-navigation .nav-next,
-.post-navigation .nav-next {
-  float: right;
-  text-align: right;
-  width: 50%; }
 
 /*============================================================================
   #Mobile Nav
@@ -1603,7 +1588,7 @@ sup {
   font-size: 14px;
   font-size: 1.4rem;
   line-height: 1;
-  color: #666;
+  color: #fff;
   text-decoration: none;
   background-color: #9F2623;
   border-radius: 4px;
@@ -1635,6 +1620,45 @@ sup {
   float: right;
   text-align: right;
   width: 50%; }
+
+.search-form {
+  position: relative;
+  width: 100%; }
+  .search-form .search-field, .search-form .search-submit {
+    display: block;
+    border: none;
+    border-radius: 0;
+    font-size: 1.3rem; }
+  .search-form .search-field {
+    width: 100%;
+    padding: 1.3rem;
+    padding-right: 7.5rem;
+    position: relative;
+    top: 0;
+    border: none;
+    background: #eee; }
+    .search-form .search-field::-webkit-input-placeholder {
+      text-transform: lowercase; }
+    .search-form .search-field::-moz-placeholder {
+      text-transform: lowercase; }
+    .search-form .search-field:-ms-input-placeholder {
+      text-transform: lowercase; }
+    .search-form .search-field::placeholder {
+      text-transform: lowercase; }
+  .search-form .search-submit {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 7rem;
+    padding: 0;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    text-transform: lowercase;
+    background: #000;
+    color: #fff; }
 
 /*============================================================================
 
