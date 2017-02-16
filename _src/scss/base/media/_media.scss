@@ -1,0 +1,32 @@
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object,
+video {
+	max-width: 100%;
+}
+
+video {
+    height: auto;
+}
+
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+	vertical-align: bottom;
+}
+
+/**
+* Bicubic resizing for non-native sized IMG:
+* code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing
+*/
+.ie7 {
+    img {
+        -ms-interpolation-mode: bicubic;
+    }
+}
+
+figure {
+	margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
+}

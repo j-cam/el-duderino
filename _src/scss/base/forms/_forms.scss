@@ -1,0 +1,63 @@
+/*================ Prevent zoom on touch devices in active inputs ================*/
+
+@include at-query($max, $bp_tablet) {
+    input,
+    textarea {
+        font-size: em(16px);
+    }
+}
+
+button,
+input,
+textarea {
+    appearance: none;
+}
+input,
+textarea,
+button,
+select {
+    padding: 0;
+    margin: 0;
+    user-select: text;
+}
+
+fieldset {
+    border: 1px solid $border_color;
+    padding: $gutter / 2;
+    ul {
+        list-style: none;
+    }
+}
+
+legend {
+    border: 0;
+    padding: 0;
+}
+
+
+input,
+textarea,
+select {
+    border: 1px solid $border_color;
+    max-width: 100%;
+    padding: 8px 10px;
+    border-radius: $radius;
+    &:focus {
+        border: 1px solid darken($border_color, 10%);
+    }
+    &[disabled],
+    &.disabled {
+        cursor: default;
+        background-color: $disabled_grey;
+        border-color: $disabled_border;
+        color: darken($disabled_grey, 30%);
+    }
+    &.input-full {
+        width: 100%;
+        margin-bottom: em(10px);
+    }
+}
+
+textarea {
+    min-height: 100px;
+}

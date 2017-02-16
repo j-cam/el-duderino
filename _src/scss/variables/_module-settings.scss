@@ -1,0 +1,49 @@
+$debug_breakpoints: true;
+
+/*============================================================================
+  2. Directory Paths
+==============================================================================*/
+
+//---- Images
+$images_directory: '/images/';
+
+
+/*============================================================================
+  5. Module & Component Specific
+==============================================================================*/
+
+//---- Drawers
+$drawer_nav_width: 100%;
+$drawer_nav_gutters: 25px;
+$drawer_cart_width: 100%;
+$drawer_bg_color: $lightest;
+$drawer_border_color: darken($drawer_bg_color, 5%);
+$drawer_text_color: $darkest;
+//$drawer_transition: all 0.4s cubic-bezier(0.46, 0.01, 0.32, 1);
+$drawer_transition: all $default_transition_duration cubic-bezier(0.46, 0.01, 0.32, 1);
+$drawer_border_color: $light_grey;
+$drawer_nav_text_color: $black;
+$drawer_nav_font_weight: $font__weight-bold;
+$drawer_sub_nav_text_color: $black;
+$drawer_sub_nav_font_weight: $font__weight-medium;
+
+//---- Button Defaults
+
+$button_color:                  #fff;
+$button_color_hover:            #fff;
+$button_color_disabled:         darken($disabled_grey, 25%);
+$button_padding:                14px 20px;
+
+
+$button_background_color:       #2c2c35;
+$button_background_color_hover: #2c2c35;
+$button_background_color_disabled: $disabled_grey;
+
+$button_background_color_secondary: #949497;
+$button_background_color_secondary_hover: #949497;
+
+$button_background_color_alt: $black;
+$button_background_color_alt_hover: $black;
+//---- Hero
+
+$hero_headline_color: #fff;

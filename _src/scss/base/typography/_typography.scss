@@ -1,0 +1,12 @@
+body,
+input,
+textarea,
+button,
+select {
+		@include font-size($font__main-size);
+    line-height: $font__main-line-height;
+    font-family: $font__main;
+    font-style: $font__main-style;
+    color: $color__text-main;
+    font-weight: $font__main-weight;
+}

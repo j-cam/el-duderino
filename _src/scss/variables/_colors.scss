@@ -1,0 +1,131 @@
+/*============================================================================
+  VARIABLES: Colors
+==============================================================================*/
+$color__background-body: #fff;
+$color__background-screen: #f1f1f1;
+$color__background-hr: #ccc;
+$color__background-button: #e6e6e6;
+$color__background-pre: #eee;
+$color__background-ins: #fff9c0;
+
+$color__text-screen: #21759b;
+$color__text-input: #666;
+$color__text-input-focus: #111;
+$color__link: royalblue;
+$color__link-visited: purple;
+$color__link-hover: midnightblue;
+$color__text-main: #404040;
+
+$color__border-button: #ccc #ccc #bbb;
+$color__border-button-hover: #ccc #bbb #aaa;
+$color__border-button-focus: #aaa #bbb #bbb;
+$color__border-input: #ccc;
+$color__border-abbr: #666;
+$color__text-button: #666;
+$color__background-button: #000;
+
+
+
+//---- Color Names
+
+$red:           #ff4444;
+$blue:          #86bed8;
+$white:         #fff;
+$black:         #2c2c35;
+$grey:          #b7b9b8;
+$light_grey: #b4b4b4;
+$lightest_grey: #f5f4f4;
+
+//---- Named Colors
+
+$primary_color:   $red;
+$secondary_color: $grey;
+$darkest:         #2c2c35;
+$lightest:        #fff;
+
+/*  ================================================================
+    Color Scheme
+    Examples based on the official Sass styleguide.
+================================================================= */
+
+/* Selections */
+$color_selection: #b3d4fc;
+
+/* Messages */
+$color_message:   #f4ecbb;
+$color_success:   #2cde2c;
+$color_warning:   #cf8600;
+$color_important: #d00;
+$color_notice:    #66b;
+
+/* Borders */
+$color_border:  #eee;
+
+$color__table-borders: #f5f4f4;
+
+$body_txt_color:  $black;
+$body_bg_color_init: $white;
+$body_bg_color_loaded: $white;
+$structure_main_bg_color: $white;
+$structure_main_bg_color_loaded: $red;
+
+$footer_bg_color:   $red;
+$footer_txt_color:  $lightest;
+
+$border_color:  $grey;
+
+$selection_color:             $red;
+$selection_background_color:  $lightest_grey;
+
+/* Messages */
+$color_message:   #f4ecbb;
+$color_success:   #2cde2c;
+$color_warning:   #cf8600;
+$color_important: #d00;
+$color_notice:    #66b;
+
+
+
+// Main Nav colors
+// Top Level
+$color__main-nav-text: #000;
+$color__main-nav-text-opacity: 1.0;
+$color__main-nav-bg: #ccc;
+$color__main-nav-bg-opacity: 1.0;
+//  Top Level -- Hover
+$color__main-nav-text-hover: #fff;
+$color__main-nav-text-opacity-hover: 1.0;
+$color__main-nav-bg-hover: #000;
+$color__main-nav-bg-opacity-hover: 1.0;
+
+// 2nd Level & Below
+$color__main-nav-sub-menu-text: #000;
+$color__main-nav-sub-menu-text-opacity: 1.0;
+$color__main-nav-sub-menu-bg: #ccc;
+$color__main-nav-sub-menu-bg-opacity: 1.0;
+
+// 2nd Level & Below -- Hover
+$color__main-nav-sub-menu-text-hover: #fff;
+$color__main-nav-sub-menu-text-opacity-hover: 1.0;
+$color__main-nav-sub-menu-bg-hover: #000;
+$color__main-nav-sub-menu-bg-opacity-hover: 1.0;
+
+
+$navbar_bg_color: $lightest;
+$navbar_txt_color: $darkest;
+$navbar_link_active: $red;
+$subnav_highlight_color: $red;
+
+$navbar_link_fw: $font__weight-medium;
+$navbar_link_color: $darkest;
+$navbar_link_font_family: $sans;
+
+
+//---- Helper colors
+
+$disabled_grey: #d5d5d7;
+$disabled_border: darken($disabled_grey, 25%);
+$error_red: #d02e2e;
+$error_red_bg: #fff6f6;
+$success_green: #56ad6a;
+$success_green_bg: #ecfef0;

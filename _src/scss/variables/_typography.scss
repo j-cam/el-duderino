@@ -1,0 +1,73 @@
+/*============================================================================
+  VARIABLES: Typography
+==============================================================================*/
+
+//---- Font Families
+
+$sans:                   sans-serif;
+$serif:                  serif;
+$monospace:              Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$monospace_alt:          "Courier 10 Pitch", Courier, monospace;
+
+
+//---- Font Weights
+
+$font__weight-regular:  400;
+$font__weight-medium:   500;
+$font__weight-bold:     700;
+$font__weight-black:    900;
+
+
+
+// MAIN <body>
+$base_font_size:         16px; // Always 16px
+$font__main-size:        16px; // Always 16px
+$font__main:             $sans;
+$font__main-size:        16px;
+$font__main-line-height: 1.5; // Always 16px
+$font__main-weight:      400;
+$font__main-style:       normal;
+$body_font_family:       $sans;
+$font__line-height-body: 1.5;
+$base_line_height:       1.5;
+$font_size_base:         16px;
+$font_size_base_min:     12px;
+
+// <CODE>
+$font__code:            $monospace;
+$font__code-size:       14px;
+
+// <PRE>
+$font__pre:             $monospace_alt;
+$font__pre-size:        14px;
+$font__line-height-pre: 1.6;
+
+
+// HEADINGS
+$headline_font_family: $sans;
+$headline_font_weight: $font__weight-medium;
+$font_size_h1:      32px;
+$font_size_h1_min:  24px;
+
+$font_size_h2:      26px;
+$font_size_h2_min:  20px;
+
+$font_size_h3:      20px;
+$font_size_h3_min:  16px;
+
+$font_size_h4:      16px;
+$font_size_h4_min:  12px;
+
+$font_size_h5:      12px;
+$font_size_h5_min:  12px;
+
+$font_size_h6:      12px;
+$font_size_h6_min:  12px;
+
+
+// BUTTONS
+$font__button:                 $sans;
+$font__size-button:            14px;
+$font__weight-button:          $font__weight-bold;
+$font__line-height-button:     1;
+$font__letter-spacing-button:  null;

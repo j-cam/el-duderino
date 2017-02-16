@@ -1,0 +1,10 @@
+// z-index reference
+$z_indexes: (
+  modal                       : 20,
+  overlay                     : 19,
+  mobile-nav                  : 18, // above desktop nav
+  desktop-nav                 : 17,
+  site-content                : 8,
+  image-swap-top              : 5,
+  image-swap-bottom           : 4,
+);

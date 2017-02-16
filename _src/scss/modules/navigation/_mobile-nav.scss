@@ -5,6 +5,8 @@
 .branding__logo-mobile-menu {
     width: 119px;
     height: 119px;
+    margin: 0 auto;
+
     img {
       width: 100%;
     }
@@ -153,6 +155,12 @@
     vertical-align: middle;
 }
 
+.mobile-nav__toggle {
+  button {
+    border-radius: none;
+    border: none;
+  }
+}
 .mobile-nav__toggle-arrow img {
     max-width: none;
     width: 17px;
@@ -285,7 +293,7 @@
 
 .drawer__close {
     text-align: left;
-    font-size: em(18px);
+    @include font-size(8px);
     position: absolute;
     top: 29px;
     right: 25px;
@@ -296,8 +304,9 @@
 
 .drawer__close button {
     @include button($pad-top-bottom: 15px, $pad-left-right: 15px);
-    background: #bb3930;
-
+    background: #000;
+    border: none;
+    border-radius: 0;
     img {
         width: 19px;
         height: 19px;

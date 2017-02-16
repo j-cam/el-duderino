@@ -1,0 +1,41 @@
+/*============================================================================
+  1. Content Sizing
+==============================================================================*/
+
+
+/**
+ *
+ * PSD/Design Canvas Width
+ * Used as context for calculating top/bottom margin percentages
+ *
+ */
+$design_canvas_width: 1400px;
+$design_width: $design_canvas_width;
+$site_max_width: $design_width; // width of design file canvas
+
+$size__site-main: 100%;
+$size__site-sidebar: 25%;
+
+//--  Gutters
+
+$gutter: 55px;
+$gutter_percent: percentage($gutter / $site_max_width);
+
+$gutter_half: ($gutter / 2 );
+$gutter_split_percent: percentage($gutter_half / $site_max_width );
+
+$gutter_tablet: $gutter / 2;
+$gutter_tablet_percent: percentage($gutter_tablet / $bp_tablet );
+
+$collection_grid_gutter: 24px;
+
+$standard_block_side_spacing: 24px; // converted to ems in most cases
+$standard_block_bottom_spacing: 34px; // converted to ems in most cases
+
+$collection_grid_item_margin: 34px;
+// Outer padding needs to be split to account for split gutters on items
+$collection_grid_padding: 0 percentage(( $gutter - ( $collection_grid_gutter / 2 )) / $site_max_width );
+
+
+$gridGutter: 0; // can be a %, but nested grids will have smaller margins because of it
+$radius: 0;

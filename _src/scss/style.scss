@@ -20,64 +20,75 @@ Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
 
-
-/*!
-  ============= _S ===============
-*/
-@import "_underscores/style";
-@import "variables";
-@import "media-queries";
-
-
-
 /*============================================================================
   VARIABLES
 ==============================================================================*/
 
+@import "variables/animations";
+@import "variables/breakpoints";
+@import "variables/typography";
+@import "variables/colors";
+@import "variables/structure";
+@import "variables/z-indexes";
+@import "variables/module-settings";
+
+
+/*============================================================================
+  MEDIA QUERIES
+==============================================================================*/
+@import "media-queries";
 @if $debug_breakpoints == true {
   @include breakpoint_debugger();
 }
 
 
 /*============================================================================
-  LIB
-  Utilities & Tools for generating output
+  UTILITIES
 ==============================================================================*/
-@import "lib/typekit"; // wait for typekit fonts to load
-@import "lib/shopify-helpers";
-@import "lib/data-uri";
-@import "lib/functions";
-@import "lib/mixins";
-@import "lib/placeholders";
-@import "lib/utils";
-@import "lib/helpers";
+@import "utilities/typekit"; // wait for typekit fonts to load
+@import "utilities/shopify-helpers";
+@import "utilities/data-uri";
+@import "utilities/functions";
+@import "utilities/mixins";
+@import "utilities/placeholders";
+@import "utilities/utils";
+@import "utilities/helpers";
 
 
-
-
-/*!
-  ============= BASE ===============
-*/
-/* ---------------------------------
+/*============================================================================
+  BASE
 
   A Base rule is applied to an element using an element selector, a
   descendent selector, or a child selector, along with any pseudo-classes.
   It doesn’t include any class or ID selectors. It is defining the default
   styling for how that element should look in all occurrences on the page.
 
------------------------------------- */
-@import "base/base";
-@import "base/headings";
-@import "base/lists";
-@import "base/links-btns";
-@import "base/forms";
-@import "base/tables";
+==============================================================================*/
+
+//-- BASE: Elements
+@import "base/normalize-custom";
+@import "base/elements/elements";
+@import "base/elements/links";
+@import "base/elements/lists";
+@import "base/elements/tables";
+
+//-- BASE: Forms
+@import "base/forms/forms";
+@import "base/forms/fields";
+@import "base/forms/buttons";
+
+//-- BASE: Media
+@import "base/media/media";
+
+//-- BASE: Typography
+@import "base/typography/typography";
+@import "base/typography/headings";
+@import "base/typography/copy";
 
 
-/*!
-  ============= LAYOUT ===============
-*/
-/* ---------------------------------
+/*============================================================================
+
+  LAYOUT
 
   Layout styles can also be divided into major and minor styles based on
   reuse. Major layout styles such as header and footer are traditionally
@@ -85,16 +96,16 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   that are common across all components of the page and use class selectors
   where appropriate.
 
---------------------------------------------- */
+==============================================================================*/
 @import "layout/grid";
 @import "layout/structure";
+@import "layout/content-sidebar";
+@import "layout/sidebar-content";
 
 
+/*============================================================================
 
-/*!
-  ============= MODULES ===============
-*/
-/* ---------------------------------
+  MODULES
 
   A Module is a more discrete component of the page. It is your
   navigation bars and your carousels and your dialogs and your widgets
@@ -113,28 +124,35 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
   number of elements and there is likely to be a desire to use descendent
   or child selectors to target those elements.
 
-------------------------------------------- */
-// @import "modules/navigation/navbar";
+==============================================================================*/
+
+//-- MODULES: WP
+@import "modules-wp/alignments";
+@import "modules-wp/widgets";
+@import "modules-wp/infinite-scroll";
+@import "modules-wp/captions";
+@import "modules-wp/comments";
+@import "modules-wp/galleries";
+@import "modules-wp/smiley";
+@import "modules-wp/posts-and-pages";
+
+//-- MODULES: Site
+@import "modules/layers";
+@import "modules/accessibility";
+@import "modules/clearings";
 @import "modules/navigation/main-nav";
 @import "modules/navigation/nav-drawer";
 @import "modules/navigation/mobile-nav";
+@import "modules/post-and-pages-nav";
+@import "modules/card";
 
+/*============================================================================
 
-
-/*!
-  ============= Layers ===============
-*/
-@import "layers";
-
-/*!
-  ============= SHAME ===============
-*/
-/* ---------------------------------
+  SHAME
 
   because hacks happen.
-
   be very specific about what each piece of code is doing, and
   how to better fix it later
+==============================================================================*/
 
------------------------------------------ */
 @import "shame";
