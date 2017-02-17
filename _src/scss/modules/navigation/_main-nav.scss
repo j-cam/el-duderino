@@ -95,6 +95,12 @@ $module: 'main-nav';
                    )
                 }
         }
+        /**
+         * @TODO Determine why:
+         *  .children seems to happen with clean instead of .sub-menu
+         *  Test Case: Clean install + wptester + no menu selected
+         */
+        .children,
         .sub-menu {
             @include rgba_property( 'background-color',
                     $color__main-nav-sub-menu-bg,

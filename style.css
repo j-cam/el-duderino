@@ -1279,7 +1279,12 @@ sup {
     line-height: 1.6;
     /* Only 1st level items */
     /* All items */
-    /* 2nd level and below items */ }
+    /* 2nd level and below items */
+    /**
+         * @TODO Determine why:
+         *  .children seems to happen with clean instead of .sub-menu
+         *  Test Case: Clean install + wptester + no menu selected
+         */ }
     .main-nav__main-menu > li > a {
       padding-top: 18px;
       padding-bottom: 18px;
@@ -1306,9 +1311,11 @@ sup {
         color: white;
         background-color: #000;
         background-color: black; }
+    .main-nav__main-menu .children,
     .main-nav__main-menu .sub-menu {
       background-color: #ccc;
       background-color: #cccccc; }
+      .main-nav__main-menu .children li:first-child a,
       .main-nav__main-menu .sub-menu li:first-child a {
         padding-top: 10px; }
   .main-nav ul {
