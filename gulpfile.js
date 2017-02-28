@@ -28,7 +28,7 @@ var include = require("gulp-include");
 
 gulp.task('browserSync', function () {
     browserSync({
-        proxy: "wpsandbox.local:8888/",
+        proxy: "wpsandbox.local/",
         open: true
       });
 });
