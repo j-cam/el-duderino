@@ -1,7 +1,7 @@
 <nav id="site-navigation" class="main-nav" role="navigation">
   <div class="main-nav__wrapper">
     <div class="tablet-down--hide">
-      <div class="layer__main-nav main-nav__flex-container">
+      <div class="layer--main-nav main-nav__flex-container">
         <div class="main-nav__site-branding-flex-item">
           <div class="main-nav__site-branding">
             <?php
