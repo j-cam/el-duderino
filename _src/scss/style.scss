@@ -32,6 +32,11 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 @import "variables/z-indexes";
 @import "variables/module-settings";
 
+@import "../../node_modules/bourbon-neat/core/neat";
+$neat-grid: (
+  columns: 12,
+  gutter: 20px,
+);
 
 /*============================================================================
   MEDIA QUERIES
