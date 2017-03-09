@@ -14,8 +14,8 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<div id="primary" class="layout__content-primary">
+		<main id="main" class="layout__content-primary_main" role="main">
 
 		<?php
 		if ( have_posts() ) :

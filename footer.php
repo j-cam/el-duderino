@@ -13,7 +13,7 @@
 
 	</div><!-- #content -->
 
-	<footer id="colophon" class="site-footer" role="contentinfo">
+	<footer id="colophon" class="layout__site-footer" role="contentinfo">
 		<div class="site-info">
 			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'el-duderino' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'el-duderino' ), 'WordPress' ); ?></a>
 			<span class="sep"> | </span>
