@@ -98,9 +98,8 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 
 ==============================================================================*/
 @import "layout/grid";
-@import "layout/structure";
-@import "layout/content-sidebar";
-@import "layout/sidebar-content";
+@import "layout/layout";
+@import "layout/layers";
 
 
 /*============================================================================
@@ -136,8 +135,9 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 @import "modules-wp/smiley";
 @import "modules-wp/posts-and-pages";
 
+
 //-- MODULES: Site
-@import "modules/layers";
+
 @import "modules/accessibility";
 @import "modules/clearings";
 @import "modules/navigation/main-nav";
@@ -147,6 +147,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 @import "modules/search-form";
 @import "modules/card";
 @import "modules/blockquote";
+@import "modules/sidebar";
 /*============================================================================
 
   SHAME
