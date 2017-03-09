@@ -21,7 +21,14 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-summary">
-		<?php the_excerpt(); ?>
+		<?php
+			if(has_post_thumbnail()){
+				the_post_thumbnail();
+			} else {
+				el_default_post_thumbnail();
+			}
+			the_excerpt();
+		?>
 	</div><!-- .entry-summary -->
 
 	<footer class="entry-footer">

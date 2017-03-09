@@ -120,3 +120,11 @@ function el_duderino_category_transient_flusher() {
 }
 add_action( 'edit_category', 'el_duderino_category_transient_flusher' );
 add_action( 'save_post',     'el_duderino_category_transient_flusher' );
+
+if ( ! function_exists( 'el_default_post_thumbnail' ) ) {
+	function el_default_post_thumbnail() {
+		?>
+		<img class="attachment-post-thumbnail size-post-thumbnail wp-post-image" src="<?php bloginfo('template_directory'); ?>/images/default.jpg" alt="<?php the_title(); ?>" />
+		<?php
+	}
+}
