@@ -28,7 +28,7 @@ var include = require("gulp-include");
 
 gulp.task('browserSync', function () {
     browserSync({
-        proxy: "wpsandbox.local/",
+        proxy: "wpsandbox.local:8888/",
         open: true
       });
 });
@@ -37,20 +37,30 @@ gulp.task('browserSync', function () {
 gulp.task('styles', function() {
 
 
-    return gulp.src( '_src/scss/style.scss' )
-        .pipe(sourcemaps.init())
-        .pipe(sass().on('error', sass.logError)) // Passes it through a gulp-sass task
-        .pipe(gulpautoprefixer(
-          {
-          browsers: ['last 2 versions'],
-          cascade: false,
-          add: true,
-          remove: true,
-        }))
-        .pipe( sourcemaps.write('.'))
-        .pipe( gulp.dest('./').on('error', gutil.log))
-        .pipe(size({ title: 'style.css size', showFiles: true }))
-        .pipe(browserSync.stream({match: '**/*.css'}));
+  return gulp.src(
+          '_src/scss/style.scss'
+      )
+      .pipe(sourcemaps.init())
+      .pipe(sass({
+          outputStyle: 'expanded'}
+      )
+      .on('error', sass.logError))
+      .pipe(
+          postcss([
+              autoprefixer({
+                    browsers: ['last 2 versions'],
+                    cascade: false,
+                    add: true,
+                    remove: true,
+                  }),
+              reporter(),
+          ])
+      )
+      .pipe( groupmq() )
+      .pipe( sourcemaps.write('.'))
+      .pipe( gulp.dest('./'))
+      .pipe(size({ title: 'SIZE -> CSS', showFiles: true }))
+      .pipe(browserSync.stream({match: '**/*.css'}));
 
 });
 
@@ -61,9 +71,6 @@ gulp.task('styles:prod', function() {
       )
       .pipe(sourcemaps.init())
       .pipe(sass().on('error', sass.logError))
-      .pipe(sass({
-          outputStyle: 'expanded'}
-      ).on('error', sass.logError))
       .pipe(
           postcss([
               autoprefixer({
@@ -117,10 +124,7 @@ gulp.task('scripts:prod', function () {
 
 
 gulp.task('watch', ['browserSync', 'styles', 'scripts'], function() {
-
   gulp.watch('_src/scss/**/*.scss', ['styles']);
-
-
   gulp.watch('_src/js/**/*.js', ['scripts']);
   gulp.watch('**/*.php', browserSync.reload);
 
