@@ -1,0 +1,48 @@
+.layout {
+
+	&__site,
+	&__site-header,
+	&__site-content,
+	&__content-primary,
+	&__content-primary_main,
+	&__content-secondary,
+	&__site-footer {
+		outline: 1px dotted red;
+	}
+	&__site-content {
+		display: flex;
+		@include clearfix();
+		padding: 20px;
+		@media ($desktop_small) {
+			flex-direction: column;
+		}
+	}
+
+	&__content-primary {
+		float: left;
+		display: flex;
+		width: $size__site-main - $size__site-sidebar;
+		@media ($desktop_small) {
+			width: $size__site-main;
+			display: block;
+			float: none;
+		}
+	}
+	&__content-primary_main {
+		width: $size__site-main;
+	}
+	&__content-secondary {
+		float: right;
+		width: $size__site-sidebar;
+		@media ($desktop_small) {
+			width: $size__site-main;
+			float: none;
+			display: block;
+		}
+	}
+
+
+	&__site-footer {
+    width: $size__site-main;
+	}
+}
