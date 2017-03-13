@@ -42,7 +42,7 @@ $neat-grid: (
   MEDIA QUERIES
 ==============================================================================*/
 @import "media-queries";
-@if $debug_breakpoints == true {
+@if $debug_breakpoints == false {
   @include breakpoint_debugger();
 }
 
