@@ -1,0 +1,31 @@
+table {
+    width: 100%;
+    border: 1px solid $table-border-color;
+    border-bottom: none;
+    border-spacing: 0;
+
+    caption, th, td {
+        padding: $table-cell-padding;
+    }
+
+    thead {
+        background: $table-head-bg;
+        color: $table-head-color;
+
+        th, td {
+            border: none;
+        }
+    }
+
+    tbody {
+        th, td {
+            border-bottom: 1px solid $table-border-color;
+        }
+    }
+
+    tfoot {
+        td, th {
+            border: none;
+        }
+    }
+}

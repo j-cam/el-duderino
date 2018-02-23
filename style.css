@@ -18,8 +18,8 @@ Use it to make something cool, have fun, and share what you've learned with othe
 el Duderino is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
 
-Normalizing styles have been helped along thanks to the fine work of
-Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+Normalizing base styles have been helped along by my BASSCSS project: https://github.com/j-cam/BASSCSS
+
 */
 
 /*============================================================================
@@ -89,36 +89,870 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
     - Usage docs: http://shopify.github.io/Timber/#sass-mixins
 ==============================================================================*/
 
-body:before,
-body:after {
-  position: fixed;
-  height: 1.5em;
-  line-height: 1.5em;
-  font-size: 0.8em;
-  bottom: 0;
-  display: block;
-  margin: 0 0;
-  text-align: center;
+/*============================================================================
+  LIB
+  Utilities & Tools for generating output
+==============================================================================*/
+
+/**
+ * Wait for typekit to load and then show fade in the site
+ * Source: https://richardkall.se/avoid-flash-of-unstyled-text-using-css-transitions/
+ */
+
+#site {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform .4s ease-in-out, opacity .4s ease-in-out;
 }
 
-body:before {
-  z-index: 400;
+.wf-loading #site {
+  opacity: 0;
+  transform: translateY(0);
+}
+
+/**
+ *
+ * Function to replace characters in a string
+ * Source: http://codepen.io/jakob-e/pen/doMoML
+ */
+
+/**
+ * px to em conversion
+ * @link http://www.pjmccormick.com/sweet-sass-function-convert-px-em
+ * @requires {variable} $base-font-size
+ * @param {number} $target - size to convert
+ * @param {number} $context ($base-font-size) - context conversion is based on
+ * @example scss
+ * .foobar { padding-bottom: em(30); }
+ * @returns {number}
+ */
+
+/**
+ * px to rem
+ * @link http://www.pjmccormick.com/sweet-sass-function-convert-px-em
+ * @requires {variable} $base-font-size
+ * @param {number} $target - size to convert
+ * @param {number} $context ($base-font-size) - context conversion is based on
+ * @example scss
+ * .foobar { padding-bottom: rem(30); }
+ * @returns {number}
+ */
+
+/**
+ * em to px conversion
+ * @link http://www.pjmccormick.com/sweet-sass-function-convert-px-em
+ * @requires {variable} $base-font-size
+ * @param {number} $target - size to convert
+ * @param {number} $context ($base-font-size) - context conversion is based on
+ * @example scss
+ * .foobar { padding-bottom: px(30); }
+ * @returns {number}
+ */
+
+/**
+ * Aspect Ratio
+ * @param {number} $ratio-numerator - ratio numerator
+ * @param {number} $ratio-denominator - ratio denominator
+ * @example scss
+ * .foobar { padding-bottom: aspect-ratio(16,9); } // @returns 56.25%
+ * @returns {number}
+ */
+
+/**
+ * Aspect Ratio
+ * Based on Fixed Image Dimensions
+ * @param {number} $w - image width
+ * @param {number} $h - image height
+ * @example scss
+ * .foobar { padding: 0 0 aspect-ratio-fixed(1080, 720); } // @returns 66.666666666667%
+ * @returns {number}
+ */
+
+/**
+ * Context Calculator
+ * @param {number} $target
+ * @param {number} $context
+ * @example scss
+ * .foobar { padding-bottom: context-calc(30,15); }
+ * @returns {number}
+ */
+
+/**
+ * Strip Unit Values
+ * @link http://hugogiraudel.com/2013/08/12/sass-functions
+ * @param {string} $num
+ * @example scss
+ * .foobar { padding-bottom: strip-unit(30px); }
+ * @returns {number}
+ */
+
+/**
+ * Z
+ * @param  string name of key
+ * @return string the key value or warning
+ */
+
+/**
+ * SMACSS Theming
+ * @example scss
+ * .foobar {
+ *   background: #ff3377;
+ *   @include theme(beccapurple){
+ *     background: #663399;
+ *   }
+ * }
+ * @param {String} $name - theme name
+ */
+
+/**
+ * Media Queries
+ * Allows you to use inline media queries.
+ * @link http://jakearchibald.github.com/sass-ie/
+ * @param {String} $breakpoint - breakpoint
+ * @param {String} $query (min-width) - query type
+ * @param {String} $type (screen) - media type
+ * @example scss
+ * .foobar { @include mq(20em) { ... } }
+ */
+
+/**
+ * IE Specific Styles
+ * @example scss
+ * .foobar {
+ *   .lt-ie8 & { @include old-ie { ... } }
+ *   .lt-ie9 & { @include old-ie { ... } }
+ * }
+ */
+
+/**
+ * Sass version of Sticky Footer by Ryan Fait
+ * @link http://ryanfait.com/sticky-footer/
+ * @param {String} $footer_height - height of footer including padding or borders
+ * @param {String} $root_selector (.site) - main wrapper element
+ * @param {String} $root_footer_selector (.push) - hidden element that "pushes" down the footer
+ * @param {String} $footer_selector (footer) - footer element
+ * @example scss
+ * .foobar { @include sticky-footer(4em) { ... } }
+ */
+
+/**
+ * the sticky footer mixin
+ **/
+
+/**
+ * Fullscreen Background for < IE8
+ * @link http://css-tricks.com/perfect-full-page-background-image/
+ * @example scss
+ * .foobar { @include fullscreen-bg() { ... } }
+ */
+
+/**
+ * @param {number} $opacity
+ * @example scss
+ * .foobar { @include opacity(4) { ... } }
+ */
+
+/**
+ * @link http://bit.ly/thoughtbot-bourbon-inline-block
+ * @require {mixin} old-ie
+ * @param {String} $alignment (baseline)
+ * @example scss
+ * .foobar { @include inline-block() { ... } }
+ */
+
+/**
+ * Retina Displays
+ * @param {String} $image - image url
+ * @param {String} $width - image width
+ * @param {String} $height - image height
+ * @example scss
+ * .foobar { @include image-2x('img/logo.png', 200px, 300px) { ... } }
+ */
+
+/**
+ * RGBA Fallback
+ * @param {String} $color
+ * @param {String} $percent
+ * @example scss
+ * .foobar { @include rgba-bg(#f37,.9) { ... } }
+ */
+
+/*============================================================================
+  #Sass Mixins
+==============================================================================*/
+
+/*============================================================================
+  Layer promotion mixin for creating smoother animations with higher FPS.
+==============================================================================*/
+
+/**
+ * Buttons
+ * This customises your buttons with a different background color and text color.
+ * If no text color is specified it will default to white.
+ * @param {String} $color-background - background color
+ * @param {String} $color-text (#fff) - text color
+ * @example scss
+ * .foobar { @include btn(#f37) { ... } }
+ */
+
+.hamburger-button span {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.hamburger-button span.focusable:active,
+.hamburger-button span.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
   width: auto;
-  padding: 0 4px;
-  right: 0;
-  background-color: rgba(255, 255, 255, 0.6);
-  color: #2c2c35;
-  content: attr(data-before);
 }
 
-body:after {
-  z-index: 300;
+span.skype_pnh_container {
+  display: none !important;
+}
+
+span.skype_pnh_print_container {
+  display: inline !important;
+}
+
+/*============================================================================
+  #Helper Classes
+==============================================================================*/
+
+.is-transitioning {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.display-table {
+  display: table;
+  table-layout: fixed;
   width: 100%;
-  left: 0;
-  right: 0;
-  background-color: rgba(44, 44, 53, 0.7);
+}
+
+.display-table-cell {
+  display: table-cell;
+  vertical-align: middle;
+  float: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+/*============================================================================
+  Table of Contents
+
+    1. Content Sizing
+    2. Directory Paths & Z-Indexes
+    3. Typography
+    4. Colors
+    5. Module & Component Specific
+
+==============================================================================*/
+
+/*============================================================================
+  1. Content Sizing
+==============================================================================*/
+
+/**
+ *
+ * PSD/Design Canvas Width
+ * Used as context for calculating top/bottom margin percentages
+ *
+ */
+
+/*============================================================================
+  2. Directory Paths & Z-Indexes
+==============================================================================*/
+
+/*============================================================================
+  3. Typography
+==============================================================================*/
+
+/*============================================================================
+  4. Colors
+==============================================================================*/
+
+/* Selections */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@-ms-viewport {
+  width: device-width;
+}
+
+article,
+aside,
+dialog,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+  display: block;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #545454;
+  text-align: left;
+  background-color: #fff;
+}
+
+[tabindex="-1"]:focus {
+  outline: 0 !important;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+  border-top: 1px solid rgba(183, 185, 184, 0.75);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+abbr[title],
+abbr[data-original-title] {
+  text-decoration: underline;
+  text-decoration: underline dotted;
+  cursor: help;
+  border-bottom: 0;
+}
+
+address {
+  margin-bottom: 1rem;
+  font-style: normal;
+  line-height: inherit;
+}
+
+ol,
+ul,
+dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  margin-bottom: 0;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dd {
+  margin-bottom: .5rem;
+  margin-left: 0;
+}
+
+blockquote {
+  margin: 0 0 1rem;
+}
+
+dfn {
+  font-style: italic;
+}
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -.25em;
+}
+
+sup {
+  top: -.5em;
+}
+
+a {
+  color: #3d3e46;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:hover {
+  color: #191a1d;
+  text-decoration: underline;
+}
+
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):hover,
+a:not([href]):not([tabindex]):focus {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):focus {
+  outline: 0;
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+pre {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  overflow: auto;
+  -ms-overflow-style: scrollbar;
+}
+
+figure {
+  margin: 0 0 1rem;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+embed,
+iframe,
+video {
+  max-width: 100%;
+}
+
+video {
+  height: auto;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+caption {
+  text-align: left;
+  caption-side: top;
+}
+
+th {
+  text-align: inherit;
+}
+
+button {
+  border-radius: 0;
+}
+
+button:focus {
+  outline: 1px dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  line-height: inherit;
+  font-style: normal;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  padding: 0;
+  border-style: none;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
+  -webkit-appearance: listbox;
+}
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
+
+::-moz-selection {
+  color: #b3d4fc;
+  background: #eee;
+}
+
+::selection {
+  color: #b3d4fc;
+  background: #eee;
+}
+
+fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+legend {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin-bottom: .5rem;
+  font-size: 1.5rem;
+  line-height: inherit;
+  color: inherit;
+  white-space: normal;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+[type="search"] {
+  outline-offset: -2px;
+  -webkit-appearance: none;
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+::-webkit-file-upload-button {
+  font: inherit;
+  -webkit-appearance: button;
+}
+
+output {
+  display: inline-block;
+}
+
+summary {
+  display: list-item;
+  cursor: pointer;
+}
+
+template {
+  display: none;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a {
+  text-decoration: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+  font-family: inherit;
+  border-style: solid;
+  border-width: thin;
+}
+
+input:-webkit-autofill {
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="search"] {
+  text-transform: lowercase;
+}
+
+input[type="text"]::-webkit-input-placeholder,
+input[type="email"]::-webkit-input-placeholder,
+input[type="url"]::-webkit-input-placeholder,
+input[type="search"]::-webkit-input-placeholder,
+input[type="password"]::-webkit-input-placeholder {
+  text-transform: lowercase;
+}
+
+input[type="text"]::-moz-placeholder,
+input[type="email"]::-moz-placeholder,
+input[type="url"]::-moz-placeholder,
+input[type="search"]::-moz-placeholder,
+input[type="password"]::-moz-placeholder {
+  text-transform: lowercase;
+}
+
+input[type="text"]:-ms-input-placeholder,
+input[type="email"]:-ms-input-placeholder,
+input[type="url"]:-ms-input-placeholder,
+input[type="search"]:-ms-input-placeholder,
+input[type="password"]:-ms-input-placeholder {
+  text-transform: lowercase;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="url"]::placeholder,
+input[type="search"]::placeholder,
+input[type="password"]::placeholder {
+  text-transform: lowercase;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  width: auto;
+  padding: 14px 20px;
+  font: normal none 700 20px/1.42 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: #2c2c35;
   color: #fff;
-  content: "greater than 1300px ";
+}
+
+textarea {
+  width: 100%;
+}
+
+/*================ Prevent zoom on touch devices in active inputs ================*/
+
+input,
+textarea,
+button,
+select {
+  padding: 0;
+  margin: 0;
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: auto;
+  width: auto;
+  padding: 14px 20px;
+  font: normal none 700 20px/1.42 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  background-color: #2c2c35;
+  color: #fff;
+}
+
+button,
+input,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input[type="image"] {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+fieldset {
+  border: 1px solid #b7b9b8;
+  padding: 27.5px;
+}
+
+fieldset ul {
+  list-style: none;
+}
+
+legend {
+  border: 0;
+  padding: 0;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+/*================ Input element overrides ================*/
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline;
+  margin: 0 8px 0 0;
+  padding: 0;
+  width: auto;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox;
+  appearance: checkbox;
+}
+
+input[type="radio"] {
+  -webkit-appearance: radio;
+  -moz-appearance: radio;
+  appearance: radio;
+}
+
+input[type="image"] {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+table {
+  width: 100%;
+  border: 1px solid #545454;
+  border-bottom: none;
+  border-spacing: 0;
+}
+
+table caption,
+table th,
+table td {
+  padding: 0.75rem;
+}
+
+table thead {
+  background: #545454;
+  color: #fff;
+}
+
+table thead th,
+table thead td {
+  border: none;
+}
+
+table tbody th,
+table tbody td {
+  border-bottom: 1px solid #545454;
+}
+
+table tfoot td,
+table tfoot th {
+  border: none;
 }
 
 /*============================================================================
@@ -397,775 +1231,6 @@ span.skype_pnh_print_container {
 
 ==============================================================================*/
 
-html {
-  font-family: sans-serif;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
-}
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-main,
-menu,
-nav,
-section,
-summary {
-  display: block;
-}
-
-audio,
-canvas,
-progress,
-video {
-  display: inline-block;
-  vertical-align: baseline;
-}
-
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-
-[hidden],
-template {
-  display: none;
-}
-
-a {
-  background-color: transparent;
-}
-
-a:active,
-a:hover {
-  outline: 0;
-}
-
-abbr[title] {
-  border-bottom: 1px dotted;
-}
-
-b,
-strong {
-  font-weight: bold;
-}
-
-dfn {
-  font-style: italic;
-}
-
-h1 {
-  font-size: 2rem;
-  margin: 0.67rem 0;
-}
-
-mark {
-  background: #ff0;
-  color: #000;
-}
-
-small {
-  font-size: 80%;
-}
-
-sub,
-sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-}
-
-sup {
-  top: -0.5rem;
-}
-
-sub {
-  bottom: -0.25rem;
-}
-
-img {
-  border: 0;
-}
-
-svg:not(:root) {
-  overflow: hidden;
-}
-
-figure {
-  margin: 1rem 40px;
-}
-
-hr {
-  box-sizing: content-box;
-  height: 0;
-}
-
-pre {
-  overflow: auto;
-}
-
-code,
-kbd,
-pre,
-samp {
-  font-family: monospace, monospace;
-  font-size: 1rem;
-}
-
-button,
-input,
-optgroup,
-select,
-textarea {
-  color: inherit;
-  font: inherit;
-  margin: 0;
-}
-
-button {
-  overflow: visible;
-}
-
-button,
-select {
-  text-transform: none;
-}
-
-button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  -webkit-appearance: button;
-  cursor: pointer;
-}
-
-button[disabled],
-html input[disabled] {
-  cursor: default;
-}
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
-}
-
-input {
-  line-height: normal;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-  box-sizing: border-box;
-  padding: 0;
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  height: auto;
-}
-
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
-fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: 0.35rem 0.625rem 0.75rem;
-}
-
-legend {
-  border: 0;
-  padding: 0;
-}
-
-textarea {
-  overflow: auto;
-}
-
-optgroup {
-  font-weight: bold;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-td,
-th {
-  padding: 0;
-}
-
-html,
-body {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  -webkit-overflow-scrolling: touch;
-}
-
-html {
-  box-sizing: border-box;
-  font-size: 62.5%;
-  height: 100%;
-}
-
-*,
-*:before,
-*:after {
-  /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
-  box-sizing: inherit;
-}
-
-body {
-  background: #fff;
-  /* Fallback for when there is no custom background color defined. */
-  height: 100%;
-  overflow-y: auto;
-}
-
-::-moz-selection {
-  color: #ff4444;
-  background: #f5f4f4;
-}
-
-::selection {
-  color: #ff4444;
-  background: #f5f4f4;
-}
-
-blockquote,
-q {
-  quotes: "" "";
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: "";
-}
-
-hr {
-  background-color: #ccc;
-  border: 0;
-  height: 1px;
-  width: 100%;
-  height: 0;
-  display: block;
-  border: 0;
-  border-top: 1px solid rgba(183, 185, 184, 0.75);
-  margin-bottom: 1.5em;
-}
-
-a {
-  color: royalblue;
-}
-
-a:visited {
-  color: purple;
-}
-
-a:hover,
-a:focus,
-a:active {
-  color: midnightblue;
-}
-
-a:focus {
-  outline: thin dotted;
-}
-
-a:hover,
-a:active {
-  outline: 0;
-}
-
-ul,
-ol {
-  margin: 0 0 1.5em 3em;
-  padding: 0 0 0 0;
-}
-
-ul {
-  list-style: disc;
-}
-
-ol {
-  list-style: decimal;
-}
-
-li > ul,
-li > ol {
-  margin-bottom: 0;
-  margin-left: 1.5em;
-}
-
-dt {
-  font-weight: bold;
-}
-
-dd {
-  margin: 0 1.5em 1.5em;
-}
-
-table {
-  width: 100%;
-  border-spacing: 0;
-  border: 1px solid #f5f4f4;
-  background: #fff;
-  border-collapse: collapse;
-  margin-bottom: 1.5em;
-}
-
-table td,
-table th {
-  border-collapse: collapse;
-  padding: 1.375em;
-  vertical-align: middle;
-}
-
-table td p:last-child,
-table th p:last-child {
-  margin-bottom: 0;
-}
-
-table tr th:last-child,
-table tr td:last-child {
-  border-right: 0;
-}
-
-table tbody th {
-  background-color: inherit;
-}
-
-table tbody td {
-  border-bottom: 1px solid #f5f4f4;
-}
-
-table tbody tr:last-child td {
-  border-bottom: 0;
-}
-
-table tbody tr:last-child th {
-  border-bottom: 0;
-}
-
-/*================ Prevent zoom on touch devices in active inputs ================*/
-
-button,
-input,
-textarea {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-input,
-textarea,
-button,
-select {
-  padding: 0;
-  margin: 0;
-  -webkit-user-select: text;
-  -moz-user-select: text;
-  -ms-user-select: text;
-  user-select: text;
-}
-
-fieldset {
-  border: 1px solid #b7b9b8;
-  padding: 27.5px;
-}
-
-fieldset ul {
-  list-style: none;
-}
-
-legend {
-  border: 0;
-  padding: 0;
-}
-
-input,
-textarea,
-select {
-  border: 1px solid #b7b9b8;
-  max-width: 100%;
-  padding: 8px 10px;
-  border-radius: 0;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-  border: 1px solid #9da09f;
-}
-
-input[disabled],
-input.disabled,
-textarea[disabled],
-textarea.disabled,
-select[disabled],
-select.disabled {
-  cursor: default;
-  background-color: #d5d5d7;
-  border-color: #949499;
-  color: #87878c;
-}
-
-input.input-full,
-textarea.input-full,
-select.input-full {
-  width: 100%;
-  margin-bottom: 0.625em;
-}
-
-textarea {
-  min-height: 100px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"],
-input[type="number"],
-input[type="tel"],
-input[type="range"],
-input[type="date"],
-input[type="month"],
-input[type="week"],
-input[type="time"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="color"],
-textarea {
-  color: #666;
-  border: 1px solid #ccc;
-  border-radius: 0;
-  padding: 3px;
-  font-family: inherit;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="password"]:focus,
-input[type="search"]:focus,
-input[type="number"]:focus,
-input[type="tel"]:focus,
-input[type="range"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="week"]:focus,
-input[type="time"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="color"]:focus,
-textarea:focus {
-  color: #111;
-}
-
-input[type="text"]::-webkit-input-placeholder,
-input[type="email"]::-webkit-input-placeholder,
-input[type="url"]::-webkit-input-placeholder,
-input[type="search"]::-webkit-input-placeholder,
-input[type="password"]::-webkit-input-placeholder {
-  text-transform: lowercase;
-}
-
-input[type="text"]::-moz-placeholder,
-input[type="email"]::-moz-placeholder,
-input[type="url"]::-moz-placeholder,
-input[type="search"]::-moz-placeholder,
-input[type="password"]::-moz-placeholder {
-  text-transform: lowercase;
-}
-
-input[type="text"]:-ms-input-placeholder,
-input[type="email"]:-ms-input-placeholder,
-input[type="url"]:-ms-input-placeholder,
-input[type="search"]:-ms-input-placeholder,
-input[type="password"]:-ms-input-placeholder {
-  text-transform: lowercase;
-}
-
-input[type="text"]::placeholder,
-input[type="email"]::placeholder,
-input[type="url"]::placeholder,
-input[type="search"]::placeholder,
-input[type="password"]::placeholder {
-  text-transform: lowercase;
-}
-
-input:-webkit-autofill {
-  background-color: inherit !important;
-  color: #666 !important;
-}
-
-select {
-  border: 1px solid #ccc;
-}
-
-textarea {
-  width: 100%;
-}
-
-button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  border: 1px solid;
-  border-color: #ccc #ccc #bbb;
-  border-radius: 0;
-  background: #000;
-  color: #fff;
-  box-shadow: none;
-  font-size: 10px;
-  font-size: 1rem;
-  line-height: 1;
-  padding: 14px 20px;
-}
-
-button:hover,
-input[type="button"]:hover,
-input[type="reset"]:hover,
-input[type="submit"]:hover {
-  border-color: #ccc #bbb #aaa;
-}
-
-button:active,
-button:focus,
-input[type="button"]:active,
-input[type="button"]:focus,
-input[type="reset"]:active,
-input[type="reset"]:focus,
-input[type="submit"]:active,
-input[type="submit"]:focus {
-  border-color: #aaa #bbb #bbb;
-}
-
-button,
-input[type="submit"] {
-  cursor: pointer;
-}
-
-input[type="radio"] {
-  -webkit-appearance: radio;
-  -moz-appearance: radio;
-  appearance: radio;
-}
-
-input[type="image"] {
-  padding-left: 0;
-  padding-right: 0;
-}
-
-input[type="checkbox"],
-input[type="radio"] {
-  display: inline;
-  margin: 0 8px 0 0;
-  padding: 0;
-  width: auto;
-}
-
-input[type="checkbox"] {
-  -webkit-appearance: checkbox;
-  -moz-appearance: checkbox;
-  appearance: checkbox;
-}
-
-/* Make sure embeds and iframes fit their containers. */
-
-embed,
-iframe,
-object,
-video {
-  max-width: 100%;
-}
-
-video {
-  height: auto;
-}
-
-img {
-  height: auto;
-  /* Make sure images are scaled correctly. */
-  max-width: 100%;
-  /* Adhere to container width. */
-  vertical-align: bottom;
-}
-
-/**
-* Bicubic resizing for non-native sized IMG:
-* code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing
-*/
-
-.ie7 img {
-  -ms-interpolation-mode: bicubic;
-}
-
-figure {
-  margin: 1em 0;
-  /* Extra wide images within figure tags don't overflow the content area. */
-}
-
-body,
-input,
-textarea,
-button,
-select {
-  font-size: 16px;
-  font-size: 1.6rem;
-  line-height: 1.5;
-  font-family: sans-serif;
-  font-style: normal;
-  color: #404040;
-  font-weight: 400;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  clear: both;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: sans-serif;
-  font-style: normal;
-  font-weight: 500;
-}
-
-h1 a,
-h2 a,
-h3 a,
-h4 a,
-h5 a,
-h6 a {
-  text-decoration: none;
-}
-
-h1 a:hover,
-h2 a:hover,
-h3 a:hover,
-h4 a:hover,
-h5 a:hover,
-h6 a:hover {
-  text-decoration: underline;
-}
-
-h1 {
-  font-size: 24px;
-  font-size: 2.4rem;
-  line-height: 1.25;
-  margin-top: 0;
-}
-
-h2 {
-  font-size: 18px;
-  font-size: 1.8rem;
-  line-height: 1.66667;
-}
-
-h3,
-h4,
-h5,
-h6 {
-  font-size: 16px;
-  font-size: 1.6rem;
-  line-height: 1.21429;
-}
-
-p {
-  margin-bottom: 1.5em;
-}
-
-p,
-q,
-i,
-em,
-strong,
-blockquote {
-  font-size: inherit;
-}
-
-dfn,
-cite,
-em,
-i {
-  font-style: italic;
-}
-
-blockquote {
-  margin: 0 1.5em;
-}
-
-address {
-  margin: 0 0 1.5em;
-}
-
-pre {
-  background: #eee;
-  font-family: "Courier 10 Pitch", Courier, monospace;
-  font-size: 14px;
-  font-size: 1.4rem;
-  line-height: 1.6;
-  margin-bottom: 1.6em;
-  max-width: 100%;
-  overflow: auto;
-  padding: 1.6em;
-}
-
-code,
-kbd,
-tt,
-var {
-  font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-  font-size: 14px;
-  font-size: 1.4rem;
-}
-
-abbr,
-acronym {
-  border-bottom: 1px dotted #666;
-  cursor: help;
-}
-
-mark,
-ins {
-  background: #fff9c0;
-  text-decoration: none;
-}
-
-big {
-  font-size: 125%;
-}
-
-sup {
-  top: 0;
-}
-
 /*============================================================================
 
   LAYOUT
@@ -1219,18 +1284,6 @@ sup {
 
 .layout__site-footer {
   width: 100%;
-}
-
-.layer--main-nav {
-  z-index: 17;
-}
-
-.layer--mobile-nav {
-  z-index: 18;
-}
-
-.layer--site-content {
-  z-index: 8;
 }
 
 /*============================================================================
@@ -1296,6 +1349,12 @@ sup {
 
 .infinity-end.neverending .site-footer {
   display: block;
+}
+
+.hentry img,
+.hentry img[class*="wp-image-"] {
+  height: auto;
+  max-width: 100%;
 }
 
 .wp-caption {
@@ -2144,29 +2203,7 @@ Rules:
   }
 }
 
-@media (max-width: 1300px) {
-  body:after {
-    content: "at or below 1300px (desktop_xlarge)";
-  }
-}
-
-@media (max-width: 1050px) {
-  body:after {
-    content: "at or below 1050px (desktop_large)";
-  }
-}
-
-@media (max-width: 980px) {
-  body:after {
-    content: "at or below 980px (desktop_medium)";
-  }
-}
-
 @media (max-width: 900px) {
-  body:after {
-    content: "at or below 900px (desktop_small)";
-  }
-
   .layout__site-content {
     -ms-flex-direction: column;
     flex-direction: column;
@@ -2185,18 +2222,6 @@ Rules:
   }
 }
 
-@media (max-width: 800px) {
-  body:after {
-    content: "at or below 800px (desktop_xsmall)";
-  }
-}
-
-@media (max-width: 769px) {
-  body:after {
-    content: "at or below 769px (desktop)";
-  }
-}
-
 @media only screen and (max-width: 768px) {
   .tablet-down--show {
     display: block !important;
@@ -2207,11 +2232,14 @@ Rules:
   }
 }
 
-@media (max-width: 768px) {
-  body:after {
-    content: "at or below 768px (tablet)";
+@media screen and (max-width: 768px) {
+  input,
+  textarea {
+    font-size: 1em;
   }
+}
 
+@media (max-width: 768px) {
   .main-nav__wrapper {
     padding: 0 1.42857%;
   }
@@ -2222,36 +2250,7 @@ Rules:
   }
 }
 
-@media screen and (max-width: 768px) {
-  input,
-  textarea {
-    font-size: 1em;
-  }
-}
-
-@media (max-width: 767px) {
-  body:after {
-    content: "at or below 767px (below_tablet)";
-  }
-}
-
-@media (max-width: 650px) {
-  body:after {
-    content: "at or below 650px (mobile_xlarge)";
-  }
-}
-
-@media (max-width: 600px) {
-  body:after {
-    content: "at or below 600px (mobile_large)";
-  }
-}
-
 @media (max-width: 550px) {
-  body:after {
-    content: "at or below 550px (mobile_medium)";
-  }
-
   .branding__logo-mobile-menu {
     width: 110px;
     height: 110px;
@@ -2259,24 +2258,6 @@ Rules:
 
   .drawer__header {
     padding-left: 9px;
-  }
-}
-
-@media (max-width: 414px) {
-  body:after {
-    content: "at or below 414px (mobile_small)";
-  }
-}
-
-@media (max-width: 375px) {
-  body:after {
-    content: "at or below 375px (mobile_xsmall)";
-  }
-}
-
-@media (max-width: 320px) {
-  body:after {
-    content: "at or below 320px (mobile_tiny)";
   }
 }
 /*# sourceMappingURL=style.css.map */
