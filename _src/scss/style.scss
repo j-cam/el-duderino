@@ -19,12 +19,11 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 Normalizing base styles have been helped along by my BASSCSS project: https://github.com/j-cam/BASSCSS
 
 */
-$debug_breakpoints: true;
-$debug_layout: true;
+$debug_breakpoints: false;
+$debug_layout: false;
 /*============================================================================
   VARIABLES
 ==============================================================================*/
-
 @import "variables/animations";
 @import "variables/breakpoints";
 @import "variables/typography";
@@ -48,27 +47,17 @@ $debug_layout: true;
   Utilities & Tools for generating output
 ==============================================================================*/
 
-@import "utilities/lib/typekit"; // wait for typekit fonts to load
-@import "utilities/lib/shopify-helpers";
-@import "utilities/lib/data-uri";
-@import "utilities/lib/functions";
-@import "utilities/lib/mixins/import"; // wait for typekit fonts to load
-@import "utilities/lib/mixins";
-@import "utilities/lib/placeholders";
-@import "utilities/lib/utils";
-@import "utilities/lib/helpers";
-@import "base/bass/import";
-/*============================================================================
-  UTILITIES
-==============================================================================*/
-@import "utilities/typekit"; // wait for typekit fonts to load
-@import "utilities/shopify-helpers";
-@import "utilities/data-uri";
-@import "utilities/functions";
-@import "utilities/mixins";
-@import "utilities/placeholders";
-@import "utilities/utils";
-@import "utilities/helpers";
+// FUNCTIONS
+@import "lib/functions/data-uri";
+@import "lib/functions/functions";
+// MIXINS
+@import "lib/mixins/import"; // wait for typekit fonts to load
+
+// VENDOR & DOMAIN SPECIFIC
+@import "lib/typekit"; // wait for typekit fonts to load
+
+
+
 
 
 
@@ -81,10 +70,7 @@ $debug_layout: true;
   styling for how that element should look in all occurrences on the page.
 
 ==============================================================================*/
-
-// //-- BASE: Typography
-// @import "base/typography/typography";
-// @import "base/typography/headings";
+@import "base/bass/import";
 @import "base/typography/copy";
 
 
@@ -153,6 +139,20 @@ $debug_layout: true;
 @import "modules/card";
 @import "modules/blockquote";
 @import "modules/sidebar";
+
+
+
+/*============================================================================
+  UTILITY CLASSES
+==============================================================================*/
+@import "utilities";
+
+
+/*============================================================================
+  PLACEHOLDERS (EXTENDS)
+==============================================================================*/
+@import "placeholders";
+
 /*============================================================================
 
   SHAME

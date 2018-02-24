@@ -95,22 +95,6 @@ Normalizing base styles have been helped along by my BASSCSS project: https://gi
 ==============================================================================*/
 
 /**
- * Wait for typekit to load and then show fade in the site
- * Source: https://richardkall.se/avoid-flash-of-unstyled-text-using-css-transitions/
- */
-
-#site {
-  opacity: 1;
-  transform: translateY(0);
-  transition: transform .4s ease-in-out, opacity .4s ease-in-out;
-}
-
-.wf-loading #site {
-  opacity: 0;
-  transform: translateY(0);
-}
-
-/**
  *
  * Function to replace characters in a string
  * Source: http://codepen.io/jakob-e/pen/doMoML
@@ -193,168 +177,30 @@ Normalizing base styles have been helped along by my BASSCSS project: https://gi
  */
 
 /**
- * SMACSS Theming
- * @example scss
- * .foobar {
- *   background: #ff3377;
- *   @include theme(beccapurple){
- *     background: #663399;
- *   }
- * }
- * @param {String} $name - theme name
+ * Wait for typekit to load and then show fade in the site
+ * Source: https://richardkall.se/avoid-flash-of-unstyled-text-using-css-transitions/
  */
 
-/**
- * Media Queries
- * Allows you to use inline media queries.
- * @link http://jakearchibald.github.com/sass-ie/
- * @param {String} $breakpoint - breakpoint
- * @param {String} $query (min-width) - query type
- * @param {String} $type (screen) - media type
- * @example scss
- * .foobar { @include mq(20em) { ... } }
- */
-
-/**
- * IE Specific Styles
- * @example scss
- * .foobar {
- *   .lt-ie8 & { @include old-ie { ... } }
- *   .lt-ie9 & { @include old-ie { ... } }
- * }
- */
-
-/**
- * Sass version of Sticky Footer by Ryan Fait
- * @link http://ryanfait.com/sticky-footer/
- * @param {String} $footer_height - height of footer including padding or borders
- * @param {String} $root_selector (.site) - main wrapper element
- * @param {String} $root_footer_selector (.push) - hidden element that "pushes" down the footer
- * @param {String} $footer_selector (footer) - footer element
- * @example scss
- * .foobar { @include sticky-footer(4em) { ... } }
- */
-
-/**
- * the sticky footer mixin
- **/
-
-/**
- * Fullscreen Background for < IE8
- * @link http://css-tricks.com/perfect-full-page-background-image/
- * @example scss
- * .foobar { @include fullscreen-bg() { ... } }
- */
-
-/**
- * @param {number} $opacity
- * @example scss
- * .foobar { @include opacity(4) { ... } }
- */
-
-/**
- * @link http://bit.ly/thoughtbot-bourbon-inline-block
- * @require {mixin} old-ie
- * @param {String} $alignment (baseline)
- * @example scss
- * .foobar { @include inline-block() { ... } }
- */
-
-/**
- * Retina Displays
- * @param {String} $image - image url
- * @param {String} $width - image width
- * @param {String} $height - image height
- * @example scss
- * .foobar { @include image-2x('img/logo.png', 200px, 300px) { ... } }
- */
-
-/**
- * RGBA Fallback
- * @param {String} $color
- * @param {String} $percent
- * @example scss
- * .foobar { @include rgba-bg(#f37,.9) { ... } }
- */
-
-/*============================================================================
-  #Sass Mixins
-==============================================================================*/
-
-/*============================================================================
-  Layer promotion mixin for creating smoother animations with higher FPS.
-==============================================================================*/
-
-/**
- * Buttons
- * This customises your buttons with a different background color and text color.
- * If no text color is specified it will default to white.
- * @param {String} $color-background - background color
- * @param {String} $color-text (#fff) - text color
- * @example scss
- * .foobar { @include btn(#f37) { ... } }
- */
-
-.hamburger-button span {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
+#site {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform .4s ease-in-out, opacity .4s ease-in-out;
 }
 
-.hamburger-button span.focusable:active,
-.hamburger-button span.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  width: auto;
-}
-
-span.skype_pnh_container {
-  display: none !important;
-}
-
-span.skype_pnh_print_container {
-  display: inline !important;
+.wf-loading #site {
+  opacity: 0;
+  transform: translateY(0);
 }
 
 /*============================================================================
-  #Helper Classes
+  BASE
+
+  A Base rule is applied to an element using an element selector, a
+  descendent selector, or a child selector, along with any pseudo-classes.
+  It doesn’t include any class or ID selectors. It is defining the default
+  styling for how that element should look in all occurrences on the page.
+
 ==============================================================================*/
-
-.is-transitioning {
-  display: block !important;
-  visibility: visible !important;
-}
-
-.display-table {
-  display: table;
-  table-layout: fixed;
-  width: 100%;
-}
-
-.display-table-cell {
-  display: table-cell;
-  vertical-align: middle;
-  float: none;
-}
-
-.visually-hidden {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-}
 
 /*============================================================================
   Table of Contents
@@ -949,282 +795,6 @@ table tfoot th {
 }
 
 /*============================================================================
-  UTILITIES
-==============================================================================*/
-
-/**
- * Wait for typekit to load and then show fade in the site
- * Source: https://richardkall.se/avoid-flash-of-unstyled-text-using-css-transitions/
- */
-
-#site {
-  opacity: 1;
-  transform: translateY(0);
-  transition: transform .4s ease-in-out, opacity .4s ease-in-out;
-}
-
-.wf-loading #site {
-  opacity: 0;
-  transform: translateY(0);
-}
-
-/**
- *
- * Function to replace characters in a string
- * Source: http://codepen.io/jakob-e/pen/doMoML
- */
-
-/**
- * px to em conversion
- * @link http://www.pjmccormick.com/sweet-sass-function-convert-px-em
- * @requires {variable} $base-font-size
- * @param {number} $target - size to convert
- * @param {number} $context ($base-font-size) - context conversion is based on
- * @example scss
- * .foobar { padding-bottom: em(30); }
- * @returns {number}
- */
-
-/**
- * px to rem
- * @link http://www.pjmccormick.com/sweet-sass-function-convert-px-em
- * @requires {variable} $base-font-size
- * @param {number} $target - size to convert
- * @param {number} $context ($base-font-size) - context conversion is based on
- * @example scss
- * .foobar { padding-bottom: rem(30); }
- * @returns {number}
- */
-
-/**
- * em to px conversion
- * @link http://www.pjmccormick.com/sweet-sass-function-convert-px-em
- * @requires {variable} $base-font-size
- * @param {number} $target - size to convert
- * @param {number} $context ($base-font-size) - context conversion is based on
- * @example scss
- * .foobar { padding-bottom: px(30); }
- * @returns {number}
- */
-
-/**
- * Aspect Ratio
- * @param {number} $ratio-numerator - ratio numerator
- * @param {number} $ratio-denominator - ratio denominator
- * @example scss
- * .foobar { padding-bottom: aspect-ratio(16,9); } // @returns 56.25%
- * @returns {number}
- */
-
-/**
- * Aspect Ratio
- * Based on Fixed Image Dimensions
- * @param {number} $w - image width
- * @param {number} $h - image height
- * @example scss
- * .foobar { padding: 0 0 aspect-ratio-fixed(1080, 720); } // @returns 66.666666666667%
- * @returns {number}
- */
-
-/**
- * Context Calculator
- * @param {number} $target
- * @param {number} $context
- * @example scss
- * .foobar { padding-bottom: context-calc(30,15); }
- * @returns {number}
- */
-
-/**
- * Strip Unit Values
- * @link http://hugogiraudel.com/2013/08/12/sass-functions
- * @param {string} $num
- * @example scss
- * .foobar { padding-bottom: strip-unit(30px); }
- * @returns {number}
- */
-
-/**
- * Z
- * @param  string name of key
- * @return string the key value or warning
- */
-
-/**
- * SMACSS Theming
- * @example scss
- * .foobar {
- *   background: #ff3377;
- *   @include theme(beccapurple){
- *     background: #663399;
- *   }
- * }
- * @param {String} $name - theme name
- */
-
-/**
- * Media Queries
- * Allows you to use inline media queries.
- * @link http://jakearchibald.github.com/sass-ie/
- * @param {String} $breakpoint - breakpoint
- * @param {String} $query (min-width) - query type
- * @param {String} $type (screen) - media type
- * @example scss
- * .foobar { @include mq(20em) { ... } }
- */
-
-/**
- * IE Specific Styles
- * @example scss
- * .foobar {
- *   .lt-ie8 & { @include old-ie { ... } }
- *   .lt-ie9 & { @include old-ie { ... } }
- * }
- */
-
-/**
- * Sass version of Sticky Footer by Ryan Fait
- * @link http://ryanfait.com/sticky-footer/
- * @param {String} $footer_height - height of footer including padding or borders
- * @param {String} $root_selector (.site) - main wrapper element
- * @param {String} $root_footer_selector (.push) - hidden element that "pushes" down the footer
- * @param {String} $footer_selector (footer) - footer element
- * @example scss
- * .foobar { @include sticky-footer(4em) { ... } }
- */
-
-/**
- * the sticky footer mixin
- **/
-
-/**
- * Fullscreen Background for < IE8
- * @link http://css-tricks.com/perfect-full-page-background-image/
- * @example scss
- * .foobar { @include fullscreen-bg() { ... } }
- */
-
-/**
- * @param {number} $opacity
- * @example scss
- * .foobar { @include opacity(4) { ... } }
- */
-
-/**
- * @link http://bit.ly/thoughtbot-bourbon-inline-block
- * @require {mixin} old-ie
- * @param {String} $alignment (baseline)
- * @example scss
- * .foobar { @include inline-block() { ... } }
- */
-
-/**
- * Retina Displays
- * @param {String} $image - image url
- * @param {String} $width - image width
- * @param {String} $height - image height
- * @example scss
- * .foobar { @include image-2x('img/logo.png', 200px, 300px) { ... } }
- */
-
-/**
- * RGBA Fallback
- * @param {String} $color
- * @param {String} $percent
- * @example scss
- * .foobar { @include rgba-bg(#f37,.9) { ... } }
- */
-
-/*============================================================================
-  #Sass Mixins
-==============================================================================*/
-
-/*============================================================================
-  Layer promotion mixin for creating smoother animations with higher FPS.
-==============================================================================*/
-
-/**
- * Buttons
- * This customises your buttons with a different background color and text color.
- * If no text color is specified it will default to white.
- * @param {String} $color-background - background color
- * @param {String} $color-text (#fff) - text color
- * @example scss
- * .foobar { @include btn(#f37) { ... } }
- */
-
-.hamburger-button span {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-.hamburger-button span.focusable:active,
-.hamburger-button span.focusable:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  width: auto;
-}
-
-span.skype_pnh_container {
-  display: none !important;
-}
-
-span.skype_pnh_print_container {
-  display: inline !important;
-}
-
-/*============================================================================
-  #Helper Classes
-==============================================================================*/
-
-.is-transitioning {
-  display: block !important;
-  visibility: visible !important;
-}
-
-.display-table {
-  display: table;
-  table-layout: fixed;
-  width: 100%;
-}
-
-.display-table-cell {
-  display: table-cell;
-  vertical-align: middle;
-  float: none;
-}
-
-.visually-hidden {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  width: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-}
-
-/*============================================================================
-  BASE
-
-  A Base rule is applied to an element using an element selector, a
-  descendent selector, or a child selector, along with any pseudo-classes.
-  It doesn’t include any class or ID selectors. It is defining the default
-  styling for how that element should look in all occurrences on the page.
-
-==============================================================================*/
-
-/*============================================================================
 
   LAYOUT
 
@@ -1235,16 +805,6 @@ span.skype_pnh_print_container {
   where appropriate.
 
 ==============================================================================*/
-
-.layout__site,
-.layout__site-header,
-.layout__site-content,
-.layout__content-primary,
-.layout__content-primary_main,
-.layout__content-secondary,
-.layout__site-footer {
-  outline: 1px dotted red;
-}
 
 .layout__site-content {
   display: -ms-flexbox;
@@ -1491,7 +1051,6 @@ span.skype_pnh_print_container {
   clip: auto !important;
   color: #21759b;
   display: block;
-  font-size: 0.875;
   font-size: 0.0875rem;
   font-weight: bold;
   height: auto;
@@ -1558,7 +1117,6 @@ span.skype_pnh_print_container {
   margin: 0 auto;
   line-height: 1.6;
   width: 100%;
-  background-color: #ccc;
   background-color: #cccccc;
 }
 
@@ -1622,16 +1180,12 @@ span.skype_pnh_print_container {
   padding-top: 18px;
   padding-bottom: 18px;
   padding-right: 18px;
-  color: #000;
   color: black;
-  background-color: #ccc;
   background-color: #cccccc;
 }
 
 .main-nav__main-menu > li > a:hover {
-  color: #fff;
   color: white;
-  background-color: #000;
   background-color: black;
 }
 
@@ -1643,20 +1197,16 @@ span.skype_pnh_print_container {
 .main-nav__main-menu ul li a {
   padding-top: 10px;
   padding-bottom: 10px;
-  color: #000;
   color: black;
 }
 
 .main-nav__main-menu ul li a:hover {
-  color: #fff;
   color: white;
-  background-color: #000;
   background-color: black;
 }
 
 .main-nav__main-menu .children,
 .main-nav__main-menu .sub-menu {
-  background-color: #ccc;
   background-color: #cccccc;
 }
 
@@ -1785,7 +1335,6 @@ span.skype_pnh_print_container {
   list-style: none;
   display: block;
   width: 100%;
-  border-color: #b4b4b4;
   border-color: rgba(180, 180, 180, 0.74);
   border-style: solid;
   border-width: 1px;
@@ -2012,7 +1561,6 @@ span.skype_pnh_print_container {
 
 .drawer__close {
   text-align: left;
-  font-size: 8px;
   font-size: 0.8rem;
   position: absolute;
   top: 29px;
@@ -2022,18 +1570,6 @@ span.skype_pnh_print_container {
 }
 
 .drawer__close button {
-  font-family: sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  font-size: 1.4rem;
-  line-height: 1;
-  color: #fff;
-  text-decoration: none;
-  background-color: #9F2623;
-  border-radius: 4px;
-  padding: 15px 15px;
-  text-align: center;
-  text-transform: uppercase;
   background: #000;
   border: none;
   border-radius: 0;
@@ -2145,6 +1681,44 @@ blockquote:before {
 
 .sidebar li a {
   word-break: break-all;
+}
+
+/*============================================================================
+  UTILITY CLASSES
+==============================================================================*/
+
+/*============================================================================
+  #Utility Classes
+==============================================================================*/
+
+.is-transitioning {
+  display: block !important;
+  visibility: visible !important;
+}
+
+/*============================================================================
+  PLACEHOLDERS (EXTENDS)
+==============================================================================*/
+
+.hamburger-button span {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.hamburger-button span.focusable:active,
+.hamburger-button span.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
 }
 
 /*============================================================================
