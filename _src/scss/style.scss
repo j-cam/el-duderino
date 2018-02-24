@@ -38,6 +38,8 @@ Normalizing base styles have been helped along by my BASSCSS project: https://gi
   MEDIA QUERIES
 ==============================================================================*/
 @import "media-queries";
+$debug_breakpoints: true;
+$debug_layout: true;
 @if $debug_breakpoints == false {
   @include breakpoint_debugger();
 }

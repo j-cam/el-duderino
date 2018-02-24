@@ -1,14 +1,18 @@
-.layout {
+@if $debug_layout == true {
+    .layout {
+        &__site,
+        &__site-header,
+        &__site-content,
+        &__content-primary,
+        &__content-primary_main,
+        &__content-secondary,
+        &__site-footer {
+            outline: 1px dotted red;
+        }
+    }
+}
 
-	&__site,
-	&__site-header,
-	&__site-content,
-	&__content-primary,
-	&__content-primary_main,
-	&__content-secondary,
-	&__site-footer {
-		outline: 1px dotted red;
-	}
+.layout {
 	&__site-content {
 		display: flex;
 		@include clearfix();
