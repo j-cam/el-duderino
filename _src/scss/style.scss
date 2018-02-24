@@ -32,11 +32,7 @@ Normalizing base styles have been helped along by my BASSCSS project: https://gi
 @import "variables/z-indexes";
 @import "variables/module-settings";
 
-@import "../../node_modules/bourbon-neat/core/neat";
-$neat-grid: (
-  columns: 12,
-  gutter: 20px,
-);
+
 
 /*============================================================================
   MEDIA QUERIES
