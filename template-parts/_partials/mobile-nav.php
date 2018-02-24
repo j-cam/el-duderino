@@ -1,4 +1,4 @@
-<div id="NavDrawer" class="layer__mobile-nav is-moved-by-drawer drawer drawer--left">
+<div id="NavDrawer" class="layer--mobile-nav is-moved-by-drawer drawer drawer--left">
 <?php // wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu-mobile', 'menu_class' => 'mobile-nav', 'container' => false ) ); ?>
   <div class="drawer__header">
       <div class="branding__logo-mobile-menu">

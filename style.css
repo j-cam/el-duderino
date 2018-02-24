@@ -371,13 +371,6 @@ span.skype_pnh_print_container {
   1. Content Sizing
 ==============================================================================*/
 
-/**
- *
- * PSD/Design Canvas Width
- * Used as context for calculating top/bottom margin percentages
- *
- */
-
 /*============================================================================
   2. Directory Paths & Z-Indexes
 ==============================================================================*/
@@ -1284,6 +1277,18 @@ span.skype_pnh_print_container {
 
 .layout__site-footer {
   width: 100%;
+}
+
+.layer--main-nav {
+  z-index: 17;
+}
+
+.layer--mobile-nav {
+  z-index: 18;
+}
+
+.layer--site-content {
+  z-index: 1;
 }
 
 /*============================================================================

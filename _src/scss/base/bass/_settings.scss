@@ -15,48 +15,36 @@ $debug_breakpoints: true;
   1. Content Sizing
 ==============================================================================*/
 
-
-/**
- *
- * PSD/Design Canvas Width
- * Used as context for calculating top/bottom margin percentages
- *
- */
-$design_canvas_width: 1400px;
-$design_width: $design_canvas_width;
-$site_max_width: $design_width; // width of design file canvas
-
-
 //--  Breakpoints
 
-$bp_desktop_xlarge: 1300px;
-$bp_desktop_large:  1050px;
-$bp_desktop_medium: 980px;
-$bp_desktop_small:  900px;
-$bp_desktop_xsmall: 800px;
+// $bp_desktop_xlarge: 1300px;
+// $bp_desktop_large:  1050px;
+// $bp_desktop_medium: 980px;
+// $bp_desktop_small:  900px;
+// $bp_desktop_xsmall: 800px;
 
-$bp_desktop:        769px;
-$bp_tablet:         768px;
-$bp_below_tablet:   $bp_tablet - 1px;
+// $bp_desktop:        769px;
+// $bp_tablet:         768px;
+// $bp_below_tablet:   $bp_tablet - 1px;
 
-$bp_mobile_xlarge:  650px;
-$bp_mobile_large:   600px; // Buttons go 100%;
-$bp_mobile_medium:  550px;
-$bp_mobile_small:   414px;// iPhone 6plus
-$bp_mobile_xsmall:  375px;// iPhone 6
-$bp_mobile_tiny:    320px;// iPhone 5
+// $bp_mobile_xlarge:  650px;
+// $bp_mobile_large:   600px; // Buttons go 100%;
+// $bp_mobile_medium:  550px;
+// $bp_mobile_small:   414px;// iPhone 6plus
+// $bp_mobile_xsmall:  375px;// iPhone 6
+// $bp_mobile_tiny:    320px;// iPhone 5
 
 
 //--  Gutters
 
-$gutter: 55px;
-$gutter_percent: percentage($gutter / $site_max_width);
+// $gutter: 55px;
+// $gutter_percent: percentage($gutter / $site_max_width);
 
-$gutter_half: ($gutter / 2 );
-$gutter_split_percent: percentage($gutter_half / $site_max_width );
+// $gutter_half: ($gutter / 2 );
+// $gutter_split_percent: percentage($gutter_half / $site_max_width );
 
-$gutter_tablet: $gutter / 2;
-$gutter_tablet_percent: percentage($gutter_tablet / $bp_tablet );
+// $gutter_tablet: $gutter / 2;
+// $gutter_tablet_percent: percentage($gutter_tablet / $bp_tablet );
 
 $headings-margin-bottom: 1rem;
 $paragraph-margin-bottom: 1rem;
@@ -78,15 +66,6 @@ $images_directory: '/assets/';
 $spritesmith_ImgName: 'sprite.png';
 $spritesmith_retinaImgName: 'sprite@2x.png';
 
-// z-index reference
-$z_indexes: (
-  modal                       : 20,
-  overlay                     : 19,
-  drawer                      : 10,
-  nav-dropdown                : 5,
-  image-swap-top              : 5,
-  image-swap-bottom           : 4,
-);
 
 
 

@@ -109,14 +109,14 @@
  * @param  string name of key
  * @return string the key value or warning
  */
-@function z($key) {
-  @if map-has-key($z_indexes, $key) {
-    @return map-get($z_indexes, $key);
-  }
+// @function z($key) {
+//   @if map-has-key($z_indexes, $key) {
+//     @return map-get($z_indexes, $key);
+//   }
 
-  @warn "Unknown `#{$key}` in $z_indexes.";
-  @return null;
-}
+//   @warn "Unknown `#{$key}` in $z_indexes.";
+//   @return null;
+// }
 
 @function ls($psd_letter_spacing_px){
   @return $psd_letter_spacing_px / 1000;
