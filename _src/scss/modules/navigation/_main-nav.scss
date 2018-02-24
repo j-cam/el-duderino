@@ -5,10 +5,10 @@ $module: 'main-nav';
     margin: 0 auto;
     line-height: 1.6;
     width: 100%;
-    @include rgba_property( 'background-color',
+    background-color: rgba(
         $color__main-nav-bg,
         $color__main-nav-bg-opacity
-    )
+    );
 
     &__wrapper {
         @include clearfix();
@@ -51,23 +51,23 @@ $module: 'main-nav';
             padding-top: 18px;
             padding-bottom: 18px;
             padding-right: 18px;
-            @include rgba_property( 'color',
+            color: rgba(
                 $color__main-nav-text,
                 $color__main-nav-text-opacity
-            )
-            @include rgba_property( 'background-color',
+            );
+            background-color: rgba(
                 $color__main-nav-bg,
                 $color__main-nav-bg-opacity
-            )
+            );
                 &:hover {
-                    @include rgba_property( 'color',
+                    color: rgba(
                         $color__main-nav-text-hover,
                         $color__main-nav-text-opacity-hover
-                    )
-                    @include rgba_property( 'background-color',
+                    );
+                    background-color: rgba(
                         $color__main-nav-bg-hover,
                         $color__main-nav-bg-opacity-hover
-                    )
+                    );
                 }
         }
         /* All items */
@@ -80,19 +80,19 @@ $module: 'main-nav';
             padding-top: 10px;
             padding-bottom: 10px;
 
-            @include rgba_property( 'color',
+            color: rgba(
                 $color__main-nav-sub-menu-text,
                 $color__main-nav-sub-menu-text-opacity
-            )
+            );
                 &:hover {
-                    @include rgba_property( 'color',
+                    color: rgba(
                         $color__main-nav-sub-menu-text-hover,
                         $color__main-nav-sub-menu-text-opacity-hover
-                    )
-                   @include rgba_property( 'background-color',
+                    );
+                   background-color: rgba(
                        $color__main-nav-sub-menu-bg-hover,
                        $color__main-nav-sub-menu-bg-opacity-hover
-                   )
+                   );
                 }
         }
         /**
@@ -102,10 +102,10 @@ $module: 'main-nav';
          */
         .children,
         .sub-menu {
-            @include rgba_property( 'background-color',
+            background-color: rgba(
                     $color__main-nav-sub-menu-bg,
                     $color__main-nav-sub-menu-bg-opacity
-            )
+            );
             li:first-child a {
                 padding-top: 10px;
             }

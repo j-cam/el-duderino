@@ -51,7 +51,7 @@
         list-style: none;
         display: block;
         width: 100%;
-        @include rgba_property('border-color',  $drawer_border_color, 0.74);
+        border-color:rgba($drawer_border_color, 0.74);
         border-style: solid;
         border-width: 1px;
         border-left:none;
@@ -303,7 +303,7 @@
 }
 
 .drawer__close button {
-    @include button($pad-top-bottom: 15px, $pad-left-right: 15px);
+    
     background: #000;
     border: none;
     border-radius: 0;
