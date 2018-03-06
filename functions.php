@@ -189,6 +189,23 @@ function el_duderino_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'el_duderino_scripts' );
 
+/**
+ * Password Protected Post
+ * Customizes the_password_form 
+ */
+function my_password_form() {
+    global $post;
+    $label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
+    $html = '<p>'. __( "To view this protected post, enter the password below:" ).'</p>' 
+            .'<form class="post-password-form" action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">'
+                .'<label class="post-password-form__label" for="' . $label . '">' . __( "Password:" ) . ' </label>'
+                .'<input class="post-password-form__field" name="post_password" id="' . $label . '" placeholder="enter password" type="password" size="20" maxlength="20" />'
+                .'<input class="post-password-form__submit" type="submit" name="Submit" value="' . esc_attr__( "Submit" ) . '" />'
+            .'</form>';
+
+    return $html;
+}
+add_filter( 'the_password_form', 'my_password_form' );
 
 /**
  * Move WP core jQuery to the footer
