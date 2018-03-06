@@ -15,8 +15,6 @@ input[type="datetime-local"],
 input[type="color"],
 textarea {
     font-family: inherit;
-    border-style: solid;
-    border-width: thin;
 }
 
 input:-webkit-autofill {
@@ -49,9 +47,6 @@ input[type="submit"] {
     border: none;
     border-radius: 0;
     box-shadow: none;
-    width: auto;
-    padding: $button_padding;
-    font: normal none $button_font_weight #{$button_font_size}/#{$button_line_height} $button_font_family;
     background-color: $button_background_color;
     color: $button_color;
 }
