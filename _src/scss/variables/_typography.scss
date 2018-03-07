@@ -4,7 +4,7 @@
 
 //---- Font Families
 
-$sans:                   sans-serif;
+$sans:                   -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" sans-serif;
 $serif:                  serif;
 $monospace:              Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 $monospace_alt:          "Courier 10 Pitch", Courier, monospace;
@@ -45,24 +45,42 @@ $font__line-height-pre: 1.6;
 
 // HEADINGS
 $headline_font_family: $sans;
-$headline_font_weight: $font__weight-medium;
-$font_size_h1:      32px;
-$font_size_h1_min:  24px;
+$headline_font_weight: $font__weight-regular;
+$font_size_h1:           32px;
+$font_size_h1_min:       24px;
+$font_weight_h1:         $font__weight-medium;
+$font_line_height_h1:    $font__main-line-height;
+$font_text_transform_h1: none;
 
-$font_size_h2:      26px;
-$font_size_h2_min:  20px;
+$font_size_h2:           26px;
+$font_size_h2_min:       20px;
+$font_line_height_h2:    $font__main-line-height;
+$font_weight_h2:         $font__weight-regular;
+$font_text_transform_h2: none;
 
-$font_size_h3:      20px;
-$font_size_h3_min:  16px;
+$font_size_h3:           20px;
+$font_size_h3_min:       16px;
+$font_line_height_h3:    $font__main-line-height;
+$font_weight_h3:         $font__weight-medium;
+$font_text_transform_h3: uppercase;
 
-$font_size_h4:      16px;
-$font_size_h4_min:  12px;
+$font_size_h4:           16px;
+$font_size_h4_min:       12px;
+$font_line_height_h4:    $font__main-line-height;
+$font_weight_h4:         $font__weight-medium;
+$font_text_transform_h4: uppercase;
 
-$font_size_h5:      12px;
-$font_size_h5_min:  12px;
+$font_size_h5:           12px;
+$font_size_h5_min:       12px;
+$font_line_height_h5:    $font__main-line-height;
+$font_weight_h5:         $font__weight-bold;
+$font_text_transform_h5: uppercase;
 
-$font_size_h6:      12px;
-$font_size_h6_min:  12px;
+$font_size_h6:           12px;
+$font_size_h6_min:       12px;
+$font_line_height_h6:    $font__main-line-height;
+$font_weight_h6:         $font__weight-bold;
+$font_text_transform_h6: uppercase;
 
 
 // BUTTONS
