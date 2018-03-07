@@ -26,3 +26,6 @@
 	clear: both;
 	margin: 0 0 1.5em;
 }
+.page-title {
+    @include heading(h1);
+}
