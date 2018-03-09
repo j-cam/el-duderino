@@ -750,7 +750,7 @@ input[type="image"] {
 
 fieldset {
   border: 1px solid #b7b9b8;
-  padding: 27.5px;
+  padding: 10px;
 }
 
 fieldset ul {
@@ -843,7 +843,6 @@ table tfoot th {
   display: -ms-flexbox;
   display: flex;
   *zoom: 1;
-  padding: 20px;
 }
 
 .layout__site-content:after {
@@ -853,7 +852,6 @@ table tfoot th {
 }
 
 .layout__content-primary {
-  float: left;
   display: -ms-flexbox;
   display: flex;
   width: 75%;
@@ -861,11 +859,13 @@ table tfoot th {
 
 .layout__content-primary_main {
   width: 100%;
+  padding: 20px 20px 0 20px;
 }
 
 .layout__content-secondary {
   float: right;
   width: 25%;
+  padding: 20px 20px 0 10px;
 }
 
 .layout__site-footer {
@@ -1162,7 +1162,7 @@ table tfoot th {
 .main-nav__wrapper {
   *zoom: 1;
   margin: 0 auto;
-  padding: 0 3.92857%;
+  padding: 0 1.42857%;
 }
 
 .main-nav__wrapper:after {
@@ -1434,8 +1434,8 @@ table tfoot th {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 27.5px;
-  right: 27.5px;
+  left: 10px;
+  right: 10px;
 }
 
 .mobile-nav > .mobile-nav__item:last-child:after {

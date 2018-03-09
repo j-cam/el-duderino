@@ -16,15 +16,15 @@
 	&__site-content {
 		display: flex;
 		@include clearfix();
-		padding: 20px;
+
 		@media ($desktop_small) {
 			flex-direction: column;
 		}
 	}
 
 	&__content-primary {
-		float: left;
-		display: flex;
+        display: flex;
+        
 		width: $size__site-main - $size__site-sidebar;
 		@media ($desktop_small) {
 			width: $size__site-main;
@@ -33,11 +33,13 @@
 		}
 	}
 	&__content-primary_main {
-		width: $size__site-main;
+        width: $size__site-main;
+        padding: $gutter $gutter 0 $gutter;
 	}
 	&__content-secondary {
 		float: right;
-		width: $size__site-sidebar;
+        width: $size__site-sidebar;
+        padding: $gutter $gutter 0 $gutter_half;
 		@media ($desktop_small) {
 			width: $size__site-main;
 			float: none;
