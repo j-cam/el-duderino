@@ -151,7 +151,14 @@ function el_duderino_widgets_init() {
 	) );
 }
 add_action( 'widgets_init', 'el_duderino_widgets_init' );
-
+/**
+ * Set stylesheet query string to version number.
+ */
+function el_duderino_wp_default_styles($styles) {
+	//use release date for version
+	$styles->default_version = THEME_VERSION;
+}
+add_action("wp_default_styles", "el_duderino_wp_default_styles");
 /**
  * Enqueue scripts and styles.
  */
